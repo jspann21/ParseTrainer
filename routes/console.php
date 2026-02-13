@@ -18,8 +18,3 @@
  */
 
 use Illuminate\Support\Facades\Schedule;
-use HebrewParseTrainer\Donation;
-
-Artisan::command('donation:retrieve', function () {
-	Donation::retrieveFromZapier();
-})->purpose('Retrieve donation information')->hourly();

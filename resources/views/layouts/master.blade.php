@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
-use HebrewParseTrainer\Donation;
 
 $activePage = isset($activePage) ? $activePage : '';
 $menu = [
@@ -58,16 +57,6 @@ if (Auth::check()) {
 				</p>
 				<p>
 					If you are in the Netherlands, you should realize that <a class="alert-link" href="https://nos.nl/artikel/2563924-raad-van-state-democratie-in-nederland-staat-onder-druk" target="_blank">we are following the same trajectory</a> and <a class="alert-link" href="https://destraatop.nu/" target="_blank">resist</a>.
-				</p>
-			</div>
-			<div class="alert alert-{{ Donation::thisMonthAmountEur() >= Donation::DESIRED_AMOUNT ? 'info' : 'warning' }}" role="alert">
-				<p>
-					This app is being used by more and more people, which is great.
-					But server costs are growing due to traffic and price increases.
-					I'd like to keep this app available to all.
-					If you can, please consider
-					<a class="alert-link" href="https://whydonate.com/donate/hebrewtools-donations" target="_blank">donating</a>.
-					We need about €{{ Donation::DESIRED_AMOUNT }} per month, and have reached €{{ preg_replace('/\\.0*$/', '', number_format(Donation::thisMonthAmountEur(), 2)) }} this month so far.
 				</p>
 			</div>
 		</div>
