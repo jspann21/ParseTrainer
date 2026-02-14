@@ -347,18 +347,22 @@ def main() -> None:
             curr = prev
         
         has_prefixes = len(node_prefixes) > 0
+        has_article = any(p[1] == "art" for p in node_prefixes)
+        has_conj = any(p[1] == "conj" for p in node_prefixes)
         
         if has_prefixes:
+            # Skip any verb with an article or conjunction prefix
+            if has_article or has_conj:
+                 continue
             if tense in {"perfect", "imperfect", "imperative"}:
                  # Skip finite verbs that are attached to prefixes (e.g. u-voshu, wayyiqtol)
                  # because the prefix often alters the vowels/dagesh of the verb form.
                  skipped_attached_finite += 1
                  continue
             elif tense in {"infinitive construct", "participle", "passive participle (qal)", "infinitive absolute"}:
-                 # For non-finite forms (like InfC 'le-amor'), we WANT the prefix included
+                 # For non-finite forms (like InfC 'le-amor'), we WANT the preposition prefix
                  # because the vowels on the verb depend on it (e.g. quiescent aleph).
-                 # BUT we filter out conjunctions (like 'we-le-amor') if the user only wants the preposition part.
-                 prefix_str = "".join([p[0] for p in node_prefixes if p[1] != "conj"])
+                 prefix_str = "".join([p[0] for p in node_prefixes if p[1] == "prep"])
                  word = prefix_str + word
 
         verb_str = strip_accents(word)
