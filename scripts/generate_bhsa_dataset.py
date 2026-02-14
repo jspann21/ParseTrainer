@@ -120,6 +120,11 @@ SELECTED_ROOTS = {
     "קלל": ("קלל", "Geminate", "be light / curse"),
     "תמם": ("תמם", "Geminate", "be complete"),
     "רנן": ("רנן", "Geminate", "shout for joy"),
+
+    "היה": ("היה", "Double weak", "be"),
+    "חיה": ("חיה", "Double weak", "live"),
+    "נשׂא": ("נשׂא", "Double weak", "lift / carry"),
+    "נטה": ("נטה", "Double weak", "stretch out / turn"),
 }
 
 STEMS_LIST = [
@@ -283,11 +288,17 @@ def main() -> None:
 
     root_lookup: dict[str, str] = {unpoint(key): key for key in SELECTED_ROOTS}
 
-    seen: set[tuple[Any, ...]] = set()
+    seen: dict[tuple[Any, ...], int] = {}  # dedup_key -> index in verbs list
+    spelling_counts: dict[tuple[Any, ...], dict[str, int]] = {}  # dedup_key -> {verb_str: count}
     verbs: list[dict[str, Any]] = []
     skipped_with_suffix = 0
     skipped_unknown_root = 0
+    skipped_with_conj = 0
+    skipped_with_article = 0
     skipped_attached_finite = 0
+    skipped_paragogic = 0
+    skipped_construct = 0
+    skipped_qere = 0
 
     for node in F.otype.s("word"):
         if F.sp.v(node) != "verb":
@@ -352,7 +363,11 @@ def main() -> None:
         
         if has_prefixes:
             # Skip any verb with an article or conjunction prefix
-            if has_article or has_conj:
+            if has_article:
+                 skipped_with_article += 1
+                 continue
+            if has_conj:
+                 skipped_with_conj += 1
                  continue
             if tense in {"perfect", "imperfect", "imperative"}:
                  # Skip finite verbs that are attached to prefixes (e.g. u-voshu, wayyiqtol)
@@ -391,15 +406,18 @@ def main() -> None:
         # H/H= = cohortative/volitive, N/WN/NH = paragogic nun
         vbe = F.vbe.v(node) or ""
         if "H" in vbe or "N" in vbe:
+             skipped_paragogic += 1
              continue
 
         # Exclude construct-state forms (e.g. בְּאֹכְלֵי = participle in construct)
         if F.st.v(node) == "c":
+             skipped_construct += 1
              continue
 
         # Exclude qere/ketiv forms (written form differs from read form)
         qere = F.qere_utf8.v(node)
         if qere and qere != word:
+             skipped_qere += 1
              continue
 
         # Note: Jussives are harder to detect, so we leave them mixed in with imperfect unless we find a reliable marker.
@@ -413,21 +431,31 @@ def main() -> None:
             gender,
             number,
         )
-        if dedup_key in seen:
-            continue
-        seen.add(dedup_key)
 
-        verbs.append(
-            {
-                "verb": verb_str,
-                "root": unicodedata.normalize("NFC", SELECTED_ROOTS[root_key][0]),
-                "stem": stem,
-                "tense": tense,
-                "person": person,
-                "gender": gender,
-                "number": number,
-            }
-        )
+        # Track spelling frequency for each dedup group
+        if dedup_key not in spelling_counts:
+            spelling_counts[dedup_key] = {}
+        spelling_counts[dedup_key][verb_str] = spelling_counts[dedup_key].get(verb_str, 0) + 1
+
+        if dedup_key in seen:
+            # Update to the most common spelling so far
+            counts = spelling_counts[dedup_key]
+            most_common = max(counts, key=counts.get)
+            existing_idx = seen[dedup_key]
+            verbs[existing_idx]["verb"] = most_common
+            continue
+
+        entry = {
+            "verb": verb_str,
+            "root": unicodedata.normalize("NFC", SELECTED_ROOTS[root_key][0]),
+            "stem": stem,
+            "tense": tense,
+            "person": person,
+            "gender": gender,
+            "number": number,
+        }
+        seen[dedup_key] = len(verbs)
+        verbs.append(entry)
 
     verbs.sort(
         key=lambda verb: (
@@ -485,7 +513,12 @@ def main() -> None:
                 "roots": len(roots),
                 "skippedWithPronominalSuffix": skipped_with_suffix,
                 "skippedUnknownRoot": skipped_unknown_root,
+                "skippedWithConjunction": skipped_with_conj,
+                "skippedWithArticle": skipped_with_article,
                 "skippedAttachedFinite": skipped_attached_finite,
+                "skippedParagogic": skipped_paragogic,
+                "skippedConstruct": skipped_construct,
+                "skippedQere": skipped_qere,
                 "includePronominalSuffixes": args.include_pronominal_suffixes,
                 "reusedIds": reused_ids,
                 "createdIds": created_ids,
