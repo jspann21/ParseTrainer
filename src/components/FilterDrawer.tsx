@@ -14,6 +14,9 @@ const SectionTitle = ({ title }: { title: string }) => (
   <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">{title}</h3>
 );
 
+const toProperCase = (s: string) =>
+  s.replace(/\b\w/g, (c) => c.toUpperCase());
+
 export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   isOpen,
   onClose,
@@ -164,7 +167,7 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
                       }`}
                       onClick={() => toggleItem("tenses", tense.name)}
                     >
-                      <span>{tense.abbreviation} - {tense.name}</span>
+                      <span>{toProperCase(tense.name)}</span>
                       {checked ? <Check className="w-4 h-4" /> : <Square className="w-4 h-4" />}
                     </button>
                   );
