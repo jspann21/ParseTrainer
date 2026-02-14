@@ -2,7 +2,7 @@ import React from "react";
 import { Delete, Check, X } from "lucide-react";
 import {
   GENDER_OPTIONS,
-  HEBREW_LETTERS,
+  HEBREW_KEYBOARD_ROWS,
   NUMBER_OPTIONS,
   PERSON_OPTIONS,
 } from "../constants";
@@ -218,19 +218,29 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
 
         {!disabled && !isSubmitted && (
           <div className="mt-4 p-3 bg-slate-50 dark:bg-gray-700/50 rounded-xl border border-slate-200 dark:border-gray-600 shadow-inner">
-            <div className="flex flex-wrap gap-1.5 justify-center md:justify-end" dir="rtl">
-              {HEBREW_LETTERS.map((char) => (
-                <button
-                  key={char}
-                  onClick={() => handleVirtualKey(char)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm text-lg sm:text-xl text-gray-800 dark:text-gray-100 hebrew-text transition-all active:scale-95 flex items-center justify-center"
-                >
-                  {char}
-                </button>
-              ))}
+            <div className="flex items-center justify-center gap-1.5">
+              <div className="flex flex-col gap-1.5">
+                {HEBREW_KEYBOARD_ROWS.map((row, rowIndex) => (
+                  <div
+                    key={`keyboard-row-${rowIndex}`}
+                    className="flex flex-row-reverse flex-wrap gap-1.5 justify-center"
+                  >
+                    {row.map((char) => (
+                      <button
+                        key={char}
+                        onClick={() => handleVirtualKey(char)}
+                        className="w-9 h-9 sm:w-10 sm:h-10 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm text-lg sm:text-xl text-gray-800 dark:text-gray-100 hebrew-text transition-all active:scale-95 flex items-center justify-center"
+                      >
+                        {char}
+                      </button>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
               <button
                 onClick={handleBackspace}
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-slate-200 dark:bg-gray-600 border border-slate-300 dark:border-gray-500 rounded-lg transition-all active:scale-95 flex items-center justify-center"
+                className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-200 dark:bg-gray-600 border border-slate-300 dark:border-gray-500 rounded-lg transition-all active:scale-95 flex items-center justify-center self-center"
                 dir="ltr"
                 title="Backspace"
               >

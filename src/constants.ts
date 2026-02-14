@@ -9,9 +9,9 @@ export const INITIAL_SELECTION: UserSelection = {
   number: "",
 };
 
-export const HEBREW_LETTERS = [
-  "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "כ", "ל",
-  "מ", "נ", "ס", "ע", "פ", "צ", "ק", "ר", "ש", "ת",
+export const HEBREW_KEYBOARD_ROWS = [
+  ["א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "כ"],
+  ["ל", "מ", "נ", "ס", "ע", "פ", "צ", "ק", "ר", "ש", "ת"],
 ];
 
 export const PERSON_OPTIONS = [
