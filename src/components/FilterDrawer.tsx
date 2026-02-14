@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { X, Filter, Search, Check, Square } from "lucide-react";
+import React, { useMemo } from "react";
+import { X, Filter, Check, Square } from "lucide-react";
 import { FilterState, TrainerDataset } from "../types";
 
 interface FilterDrawerProps {
@@ -24,8 +24,6 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   filters,
   onFiltersChange,
 }) => {
-  const [rootSearch, setRootSearch] = useState("");
-
   const toggleItem = (key: keyof FilterState, value: string) => {
     const current = new Set(filters[key]);
     if (current.has(value)) {
@@ -48,7 +46,7 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   };
 
   const rootGroups = useMemo(() => {
-    const lowered = rootSearch.trim().toLowerCase();
+    const lowered = "";
     const byName = new Map<string, string[]>();
 
     for (const root of dataset.roots) {
@@ -66,7 +64,7 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
     }
 
     return Array.from(byName.entries()).sort((a, b) => a[0].localeCompare(b[0]));
-  }, [dataset.roots, rootSearch]);
+  }, [dataset.roots]);
 
   return (
     <>
@@ -192,16 +190,6 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
                     None
                   </button>
                 </div>
-              </div>
-
-              <div className="relative mb-4">
-                <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-                <input
-                  value={rootSearch}
-                  onChange={(event) => setRootSearch(event.target.value)}
-                  placeholder="Search roots or root kind"
-                  className="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 pl-10 pr-3 py-2 text-sm"
-                />
               </div>
 
               <div className="space-y-4 max-h-96 overflow-y-auto pr-1">
