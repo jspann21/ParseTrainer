@@ -82,7 +82,7 @@ SELECTED_ROOTS = {
     "הרג": ("הרג", "I-Guttural", "kill"),
     
     "אכל": ("אכל", "I-Aleph", "eat"),
-    "אהב": ("אהב", "I-Aleph", "love"),
+    "אסף": ("אסף", "I-Aleph", "gather"),
     "אבד": ("אבד", "I-Aleph", "perish"),
     "אמר": ("אמר", "I-Aleph", "say"),
     
@@ -96,18 +96,18 @@ SELECTED_ROOTS = {
     "ירד": ("ירד", "I-Waw", "go down"),
     "ידע": ("ידע", "I-Waw", "know"),
     
-    "יטב": ("יטב", "I-Yod", "be good"),
-    "ינק": ("ינק", "I-Yod", "suckle"),
+    "ירשׁ": ("ירשׁ", "I-Yod", "possess / inherit"),
+    "ידה": ("ידה", "I-Yod", "praise / give thanks"),
     "ישׁר": ("ישׁר", "I-Yod", "be straight"),
     "יצא": ("יצא", "I-Yod", "go out"),
     
-    "בחר": ("בחר", "II-Guttural", "choose"),
+    "כרת": ("כרת", "II-Guttural", "cut / make covenant"),
     "ברך": ("ברך", "II-Guttural", "bless"),
-    "שׁחט": ("שׁחט", "II-Guttural", "slaughter"),
+    "בער": ("בער", "II-Guttural", "burn"),
     "זעק": ("זעק", "II-Guttural", "cry out"),
     
     "גלה": ("גלה", "III-He", "uncover / reveal"),
-    "בנה": ("בנה", "III-He", "build"),
+    "ענה": ("ענה", "III-He", "answer"),
     "ראה": ("ראה", "III-He", "see"),
     "עשׂה": ("עשׂה", "III-He", "do / make"),
     
