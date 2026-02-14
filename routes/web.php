@@ -24,40 +24,7 @@ Route::group(
 	function () {
 
 		Route::get('/', function () {
-			return view('trainer');
-		});
-
-		Route::get('/stem', function () {
-			return \HebrewParseTrainer\Stem::all();
-		});
-
-		Route::get('/tense', function () {
-			return \HebrewParseTrainer\Tense::all();
-		});
-
-		Route::post('/verb/random',
-			'\App\Http\Controllers\VerbController@random');
-
-		Route::get('/contribute', function () {
-			return view('contribute');
-		});
-
-		Route::group(['middleware' => 'auth'], function () {
-			Route::get('/stats', function () {
-				return view('stats');
-			});
-
-			Route::get('/verb/{id}/vote/{choice}',
-				'\App\Http\Controllers\VerbController@vote');
-
-			Route::post('/verb/suggest',
-				'\App\Http\Controllers\VerbController@suggest');
-
-			Route::post('/root/create',
-				'\App\Http\Controllers\RootController@create');
-
+			return view('static_app');
 		});
 
 });
-
-Auth::routes();

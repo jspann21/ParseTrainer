@@ -34,8 +34,4 @@ class VerbAction extends Model {
 		return $this->belongsTo('HebrewParseTrainer\Verb');
 	}
 
-	public function user() {
-		return $this->belongsTo('HebrewParseTrainer\User');
-	}
-
 }

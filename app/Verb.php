@@ -43,27 +43,4 @@ class Verb extends Model {
 			$total += $vote->vote_weight;
 		return $total;
 	}
-
-	public function userVote(User $user) {
-		$votes = $this->actions()
-			->where('kind', VerbAction::KIND_VOTE)
-			->where('user_id', $user->id)
-			->get();
-		foreach ($votes as $vote) {
-			return $vote->vote_weight;
-		}
-		return 0;
-	}
-
-	public function suggestedBy() {
-		$suggs = $this->actions()
-			->where('kind', VerbAction::KIND_SUGGEST)
-			->get();
-
-		foreach ($suggs as $sugg) {
-			return $sugg->user;
-		}
-
-		return null;
-	}
 }

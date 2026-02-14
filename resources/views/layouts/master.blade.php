@@ -17,18 +17,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <?php
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 $activePage = isset($activePage) ? $activePage : '';
 $menu = [
 	'Train' => ['/', ''],
 ];
-
-if (Auth::check()) {
-	$menu['Contribute'] = ['contribute', 'contribute'];
-	$menu['Statistics'] = ['stats', 'stats'];
-}
 ?>
 <html lang="en">
 	<head>
@@ -53,9 +47,6 @@ if (Auth::check()) {
 						@foreach($menu as $name => $link)
 							<li role="presentation" class="{{ Request::is($link[0]) ? 'active' : '' }}"><a href="{{ url($link[1]) }}">{{ $name }}</a></li>
 						@endforeach
-						@if(Auth::check())
-							<li role="presentation"><a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
-						@endif
 					</ul>
 				</nav>
 				<h2 class="text-muted"><a href="{{ url('/') }}">ParseTrainer</a></h2>
@@ -65,13 +56,6 @@ if (Auth::check()) {
 		</div>
 
 		<script src="{{ asset('js/app.js') }}"></script>
-		@if(Auth::check())
-			<script src="{{ asset('js/moderators.js') }}"></script>
-
-			<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display:none;">
-				{{ csrf_field() }}
-			</form>
-		@endif
 
 		@yield('master-scripts')
 	</body>
