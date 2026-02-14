@@ -13,9 +13,15 @@ import {
 import { DISPLAY_LABELS, INITIAL_SELECTION } from "./constants";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { FilterDrawer } from "./components/FilterDrawer";
+import { GameAnimations } from "./components/GameAnimations";
+import { GameModeToggle } from "./components/GameModeToggle";
+import { GamePanel } from "./components/GamePanel";
 import { HistoryDrawer } from "./components/HistoryDrawer";
 import { ParsingForm } from "./components/ParsingForm";
+import { RulesModal } from "./components/RulesModal";
+import { ScoreSubmitModal } from "./components/ScoreSubmitModal";
 import { VerbDisplay } from "./components/VerbDisplay";
+import { useGameMode } from "./hooks/useGameMode";
 import {
   buildPrompt,
   dataset,
@@ -26,6 +32,7 @@ import {
   saveFilters,
 } from "./services/trainerService";
 import { AnswerCandidate, FilterState, HistoryEntry, OptionItem, Prompt, UserSelection } from "./types";
+import { normalizeRoot } from "./utils/hebrew";
 
 const formatParsing = (answer: AnswerCandidate): React.ReactNode => {
   const person = DISPLAY_LABELS.person[answer.person ?? ""];
@@ -59,6 +66,9 @@ function AppContent() {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [reviewEntry, setReviewEntry] = useState<HistoryEntry | null>(null);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  // Game mode
+  const game = useGameMode();
 
   const stemOptions: OptionItem[] = useMemo(() => {
     return dataset.stems.map((stem) => ({
@@ -149,9 +159,26 @@ function AppContent() {
     }
 
     const matched = findMatchingAnswers(selection, remainingAnswers);
+
+    // In game mode, root is required — if they skipped root, it's incorrect
+    if (game.isGameMode) {
+      const selectedRoot = normalizeRoot(selection.root);
+      const rootSkipped = selectedRoot.length === 0;
+
+      if (rootSkipped) {
+        setStatus("incorrect");
+        setStatusText("Root letters are required in Game Mode!");
+        game.recordIncorrect();
+        return;
+      }
+    }
+
     if (matched.length === 0) {
       setStatus("incorrect");
       setStatusText("Not quite right. Correct choices are highlighted in the form.");
+      if (game.isGameMode) {
+        game.recordIncorrect();
+      }
       return;
     }
 
@@ -161,12 +188,18 @@ function AppContent() {
     if (updatedRemaining.length === 0) {
       setStatus("correct");
       setStatusText("All valid parsings found.");
+      if (game.isGameMode) {
+        game.recordCorrect();
+        // Auto-advance after brief delay for visual feedback
+        setTimeout(() => loadPrompt(filters), 1200);
+      }
       return;
     }
 
     setStatus("partial");
     setStatusText(`Correct. ${updatedRemaining.length} parsing(s) still remaining for this form.`);
     setSelection(INITIAL_SELECTION);
+    // In game mode, partial doesn't count as full correct — continue filling
   };
 
   const handleNextVerb = () => {
@@ -192,7 +225,10 @@ function AppContent() {
     isReviewMode || ((status === "incorrect" || status === "correct") && feedbackAnswers.length > 1);
 
   return (
-    <div className="min-h-screen pb-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto font-sans transition-colors duration-300">
+    <div className="min-h-screen pb-12 px-4 sm:px-6 lg:px-8 font-sans transition-colors duration-300">
+      {/* Inject game animations */}
+      {game.isGameMode && <GameAnimations />}
+
       <HistoryDrawer
         isOpen={isHistoryOpen}
         onClose={() => setIsHistoryOpen(false)}
@@ -213,134 +249,179 @@ function AppContent() {
         onFiltersChange={handleFiltersChange}
       />
 
-      <header className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-blue-600 rounded-lg shadow-lg">
-            <BookOpen className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">Morphology Master</h1>
-            <p className="text-gray-500 dark:text-gray-400 text-sm">Biblical Hebrew Parser</p>
-          </div>
-        </div>
+      {/* Rules & Submit Modals */}
+      <RulesModal isOpen={game.showRulesModal} onClose={game.dismissRulesModal} />
+      <ScoreSubmitModal
+        isOpen={game.showSubmitModal}
+        streak={game.pendingSubmitStreak}
+        onClose={game.dismissSubmitModal}
+        onSubmitted={game.refreshLeaderboard}
+      />
 
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            onClick={() => setIsFilterOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium text-sm"
-          >
-            <Filter className="w-4 h-4" />
-            Filters
-          </button>
-
-          <button
-            onClick={() => setIsHistoryOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium text-sm"
-          >
-            <History className="w-4 h-4" />
-            History
-          </button>
-
-          <button
-            onClick={() => setIsDarkMode((value) => !value)}
-            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-            title="Toggle Dark Mode"
-          >
-            {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-        </div>
-      </header>
-
-      <main>
-        {error && (
-          <div className="bg-red-50 dark:bg-red-900/30 border-l-4 border-red-500 p-4 mb-6 rounded shadow-sm">
-            <div className="flex">
-              <AlertCircle className="h-5 w-5 text-red-500 dark:text-red-400" />
-              <div className="ml-3">
-                <p className="text-sm text-red-700 dark:text-red-200">{error}</p>
-              </div>
+      <div className={`mx-auto transition-all duration-500 ${game.isGameMode ? "max-w-7xl" : "max-w-3xl"}`}>
+        <header className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-blue-600 rounded-lg shadow-lg">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">Morphology Master</h1>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Biblical Hebrew Parser</p>
             </div>
           </div>
-        )}
 
-        <VerbDisplay word={displayed?.word || "..."} loading={loading} />
+          <div className="flex flex-wrap items-center gap-3">
+            <GameModeToggle isActive={game.isGameMode} onToggle={game.toggleGameMode} />
 
-        {(status !== "idle" || isReviewMode) && displayed && (
-          <div
-            className={`mb-8 p-6 rounded-xl border-l-8 shadow-md flex flex-col gap-4 ${isReviewMode
-                ? "bg-gray-100 dark:bg-slate-800 border-gray-400"
-                : status === "correct" || status === "partial"
-                  ? "bg-green-50 dark:bg-green-900/20 border-green-500"
-                  : "bg-red-50 dark:bg-red-900/20 border-red-500"
-              }`}
-          >
-            <div className="flex items-center gap-2">
-              {isReviewMode ? (
-                <History className="w-6 h-6 text-gray-600 dark:text-gray-400" />
-              ) : status === "correct" || status === "partial" ? (
-                <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400" />
-              ) : (
-                <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
-              )}
-              <h3 className="text-xl font-bold">{isReviewMode ? "History Review" : statusText}</h3>
-            </div>
+            <button
+              onClick={() => setIsFilterOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium text-sm"
+            >
+              <Filter className="w-4 h-4" />
+              Filters
+            </button>
 
-            {showAnswersList && (
-              <div className="text-sm md:text-base space-y-1 text-gray-700 dark:text-gray-300">
-                <p>
-                  <span className="font-semibold text-gray-900 dark:text-white">Possible answers:</span>
-                </p>
-                <ul className="space-y-1">
-                  {feedbackAnswers.map((answer, index) => (
-                    <li key={`${answer.root}-${answer.stem}-${answer.tense}-${index}`}>{formatParsing(answer)}</li>
-                  ))}
-                </ul>
-              </div>
+            {!game.isGameMode && (
+              <button
+                onClick={() => setIsHistoryOpen(true)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium text-sm"
+              >
+                <History className="w-4 h-4" />
+                History
+              </button>
             )}
 
-            <div className="flex flex-wrap gap-2">
-              {isReviewMode ? (
-                <button
-                  onClick={() => {
-                    setReviewEntry(null);
-                  }}
-                  className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-6 py-3 rounded-lg font-semibold"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  Return to Practice
-                </button>
-              ) : status === "incorrect" || status === "correct" ? (
-                <button
-                  onClick={handleNextVerb}
-                  className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-6 py-3 rounded-lg font-semibold"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  Next Verb
-                </button>
-              ) : null}
+            <button
+              onClick={() => setIsDarkMode((value) => !value)}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              title="Toggle Dark Mode"
+            >
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+        </header>
+
+        <main>
+          {error && (
+            <div className="bg-red-50 dark:bg-red-900/30 border-l-4 border-red-500 p-4 mb-6 rounded shadow-sm">
+              <div className="flex">
+                <AlertCircle className="h-5 w-5 text-red-500 dark:text-red-400" />
+                <div className="ml-3">
+                  <p className="text-sm text-red-700 dark:text-red-200">{error}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {!isReviewMode && !error && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 md:p-8 transition-colors duration-300">
-            <ParsingForm
-              selection={selection}
-              onChange={handleSelectionChange}
-              onSubmit={handleSubmit}
-              isSubmitted={status === "incorrect" || status === "correct"}
-              disabled={loading || status === "correct" || status === "incorrect"}
-              possibleAnswers={feedbackAnswers}
-              stemOptions={stemOptions}
-              tenseOptions={tenseOptions}
-            />
-          </div>
-        )}
-      </main>
+          {/* Two-column layout when game mode is on */}
+          <div className={`${game.isGameMode ? "flex flex-col lg:flex-row gap-6" : ""}`}>
+            {/* Left column: parsing interface */}
+            <div className={`${game.isGameMode ? "flex-1 min-w-0" : ""}`}>
+              <VerbDisplay word={displayed?.word || "..."} loading={loading} />
 
-      <footer className="mt-12 text-center text-gray-400 dark:text-gray-600 text-sm">
-        <p>Fixed ParseTrainer data • Static GitHub Pages build</p>
-      </footer>
+              {(status !== "idle" || isReviewMode) && displayed && (
+                <div
+                  className={`mb-8 p-6 rounded-xl border-l-8 shadow-md flex flex-col gap-4 ${isReviewMode
+                    ? "bg-gray-100 dark:bg-slate-800 border-gray-400"
+                    : status === "correct" || status === "partial"
+                      ? "bg-green-50 dark:bg-green-900/20 border-green-500"
+                      : "bg-red-50 dark:bg-red-900/20 border-red-500"
+                    }`}
+                >
+                  <div className="flex items-center gap-2">
+                    {isReviewMode ? (
+                      <History className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                    ) : status === "correct" || status === "partial" ? (
+                      <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    ) : (
+                      <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
+                    )}
+                    <h3 className="text-xl font-bold">{isReviewMode ? "History Review" : statusText}</h3>
+                  </div>
+
+                  {showAnswersList && (
+                    <div className="text-sm md:text-base space-y-1 text-gray-700 dark:text-gray-300">
+                      <p>
+                        <span className="font-semibold text-gray-900 dark:text-white">Possible answers:</span>
+                      </p>
+                      <ul className="space-y-1">
+                        {feedbackAnswers.map((answer, index) => (
+                          <li key={`${answer.root}-${answer.stem}-${answer.tense}-${index}`}>{formatParsing(answer)}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-2">
+                    {isReviewMode ? (
+                      <button
+                        onClick={() => {
+                          setReviewEntry(null);
+                        }}
+                        className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-6 py-3 rounded-lg font-semibold"
+                      >
+                        <ArrowLeft className="w-4 h-4" />
+                        Return to Practice
+                      </button>
+                    ) : (status === "incorrect" || status === "correct") && !game.isGameMode ? (
+                      <button
+                        onClick={handleNextVerb}
+                        className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-6 py-3 rounded-lg font-semibold"
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        Next Verb
+                      </button>
+                    ) : status === "incorrect" && game.isGameMode ? (
+                      <button
+                        onClick={handleNextVerb}
+                        className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-6 py-3 rounded-lg font-semibold"
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        Next Verb
+                      </button>
+                    ) : null}
+                  </div>
+                </div>
+              )}
+
+              {!isReviewMode && !error && (
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 md:p-8 transition-colors duration-300">
+                  <ParsingForm
+                    selection={selection}
+                    onChange={handleSelectionChange}
+                    onSubmit={handleSubmit}
+                    isSubmitted={status === "incorrect" || status === "correct"}
+                    disabled={loading || status === "correct" || status === "incorrect"}
+                    possibleAnswers={feedbackAnswers}
+                    stemOptions={stemOptions}
+                    tenseOptions={tenseOptions}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Right column: Game Panel (only in game mode) */}
+            {game.isGameMode && (
+              <div className="lg:w-[380px] flex-shrink-0">
+                <div className="lg:sticky lg:top-4">
+                  <GamePanel
+                    streak={game.streak}
+                    bestStreak={game.bestStreak}
+                    currentTier={game.currentTier}
+                    lastResult={game.lastResult}
+                    comboText={game.comboText}
+                    leaderboard={game.leaderboard}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </main>
+
+        <footer className="mt-12 text-center text-gray-400 dark:text-gray-600 text-sm">
+          <p>Fixed ParseTrainer data • Static GitHub Pages build</p>
+        </footer>
+      </div>
     </div>
   );
 }

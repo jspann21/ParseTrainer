@@ -93,3 +93,29 @@ export interface OptionItem {
   value: string;
   label: string;
 }
+
+export interface LeaderboardEntry {
+  id: string;
+  initials: string;
+  streak: number;
+  created_at: string;
+}
+
+export type GameTier =
+  | "none"
+  | "onFire"
+  | "blazing"
+  | "unstoppable"
+  | "legendary"
+  | "transcendent";
+
+export interface GameState {
+  isGameMode: boolean;
+  streak: number;
+  bestStreak: number;
+  currentTier: GameTier;
+  lastResult: "correct" | "incorrect" | null;
+  showRulesModal: boolean;
+  showSubmitModal: boolean;
+  pendingSubmitStreak: number;
+}
