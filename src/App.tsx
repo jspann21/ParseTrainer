@@ -146,7 +146,7 @@ function AppContent() {
     const matched = findMatchingAnswers(selection, remainingAnswers);
     if (matched.length === 0) {
       setStatus("incorrect");
-      setStatusText("Not quite right. Review the correct parsing options below.");
+      setStatusText("Not quite right. Correct choices are highlighted in the form.");
       return;
     }
 
@@ -183,7 +183,8 @@ function AppContent() {
     return prompt ? prompt.answers : [];
   }, [isReviewMode, prompt, remainingAnswers, reviewEntry, status]);
 
-  const showAnswersList = isReviewMode || status === "incorrect" || status === "correct";
+  const showAnswersList =
+    isReviewMode || ((status === "incorrect" || status === "correct") && feedbackAnswers.length > 1);
 
   return (
     <div className="min-h-screen pb-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto font-sans transition-colors duration-300">

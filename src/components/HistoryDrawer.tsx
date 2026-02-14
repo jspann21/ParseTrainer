@@ -61,9 +61,6 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({ isOpen, onClose, h
                         {roots}
                       </span>
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400 truncate mb-1">
-                      {entry.answers.length} possible parsing{entry.answers.length === 1 ? "" : "s"}
-                    </div>
                     <div className="text-xs text-blue-600 dark:text-blue-400 font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4">
                       Review <ChevronRight className="w-3 h-3" />
                     </div>
