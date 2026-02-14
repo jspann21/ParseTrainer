@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -147,11 +148,11 @@ LEX_CLEAN_RE = re.compile(r"[=/\[\]<>]")
 
 
 def strip_accents(word: str) -> str:
-    return STRIP_ACCENTS_RE.sub("", word)
+    return unicodedata.normalize("NFC", STRIP_ACCENTS_RE.sub("", word))
 
 
 def unpoint(word: str) -> str:
-    return UNPOINT_RE.sub("", word)
+    return unicodedata.normalize("NFC", UNPOINT_RE.sub("", word))
 
 
 def lex_to_root(lex: str) -> str:
@@ -277,6 +278,7 @@ def main() -> None:
         app_kwargs["version"] = bhsa_version
     app = use(args.bhsa_module, **app_kwargs)
     F = app.api.F
+    L = app.api.L
     print("BHSA data loaded.")
 
     root_lookup: dict[str, str] = {unpoint(key): key for key in SELECTED_ROOTS}
@@ -285,6 +287,7 @@ def main() -> None:
     verbs: list[dict[str, Any]] = []
     skipped_with_suffix = 0
     skipped_unknown_root = 0
+    skipped_attached_finite = 0
 
     for node in F.otype.s("word"):
         if F.sp.v(node) != "verb":
@@ -315,11 +318,51 @@ def main() -> None:
         if not word or "\u05c3" in word or "\u05be" in word:
             continue
 
-        verb_str = strip_accents(word)
-        root_key = root_lookup[root_consonants]
         stem = STEMS[stem_raw]
         tense = TENSES[tense_raw]
         person = PERSONS.get(F.ps.v(node))
+
+        # Check for attached prefixes (prepositions, conjunctions, articles)
+        node_prefixes: list[tuple[str, str]] = []
+        curr = node
+        while True:
+            prev = curr - 1
+            if prev <= 0:
+                break
+            
+            # Check if prev connects to curr (empty trailer usually means attached)
+            try:
+                trailer = F.trailer.v(prev)
+            except:
+                break
+            if trailer != "": 
+                break
+            
+            # Only consider specific parts of speech as prefixes
+            sp = F.sp.v(prev)
+            if sp not in {"prep", "conj", "art"}:
+                break
+            
+            node_prefixes.insert(0, (F.g_word_utf8.v(prev), sp))
+            curr = prev
+        
+        has_prefixes = len(node_prefixes) > 0
+        
+        if has_prefixes:
+            if tense in {"perfect", "imperfect", "imperative"}:
+                 # Skip finite verbs that are attached to prefixes (e.g. u-voshu, wayyiqtol)
+                 # because the prefix often alters the vowels/dagesh of the verb form.
+                 skipped_attached_finite += 1
+                 continue
+            elif tense in {"infinitive construct", "participle", "passive participle (qal)", "infinitive absolute"}:
+                 # For non-finite forms (like InfC 'le-amor'), we WANT the prefix included
+                 # because the vowels on the verb depend on it (e.g. quiescent aleph).
+                 # BUT we filter out conjunctions (like 'we-le-amor') if the user only wants the preposition part.
+                 prefix_str = "".join([p[0] for p in node_prefixes if p[1] != "conj"])
+                 word = prefix_str + word
+
+        verb_str = strip_accents(word)
+        root_key = root_lookup[root_consonants]
         
         # Handle gender: map 'unknown' to 'c' only for finite verbs (perf, impf, etc) 
         # but keep as None for infinitives if they are truly N/A.
@@ -364,7 +407,7 @@ def main() -> None:
         verbs.append(
             {
                 "verb": verb_str,
-                "root": SELECTED_ROOTS[root_key][0],
+                "root": unicodedata.normalize("NFC", SELECTED_ROOTS[root_key][0]),
                 "stem": stem,
                 "tense": tense,
                 "person": person,
@@ -393,7 +436,7 @@ def main() -> None:
             continue
         roots.append(
             {
-                "root": display,
+                "root": unicodedata.normalize("NFC", display),
                 "rootKindId": root_kind_by_name[kind_name],
                 "rootKindName": kind_name,
                 "translation": translation,
@@ -429,6 +472,7 @@ def main() -> None:
                 "roots": len(roots),
                 "skippedWithPronominalSuffix": skipped_with_suffix,
                 "skippedUnknownRoot": skipped_unknown_root,
+                "skippedAttachedFinite": skipped_attached_finite,
                 "includePronominalSuffixes": args.include_pronominal_suffixes,
                 "reusedIds": reused_ids,
                 "createdIds": created_ids,
