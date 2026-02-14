@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "export:data": "php artisan trainer:export-static-data --out=src/data/parsetrainer-data.json"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",

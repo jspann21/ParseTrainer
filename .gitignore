@@ -1,47 +1,16 @@
-# Modules
+# Node modules
 /node_modules
-/vendor
 
-# Laravel
-.env
-.env.backup
-.env.production
-/bootstrap/compiled.php
-/app/storage
-/public/storage
-/public/hot
-/storage/*.key
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-
-# Storage
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/views/*
-/storage/logs/*
-!/storage/logs/.gitignore
-
-# Build
+# Build output
 /dist
 /dist-ssr
-/public/build
-/public/js
-/public/css
-/public/mix-manifest.json
-/public/audio
-/public/packages
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/app/tests/_log
-/build/logs
-/build/coverage
 
-# IDE
+# IDE and OS
 .idea
 .vscode
 *.suo
@@ -50,14 +19,7 @@ yarn-error.log*
 *.sln
 *.sw?
 .DS_Store
-/_ide_helper.php
 
-# Project Specific
-.composer
-composer.phar
-/app/config/packages
-/.mysql-data/*
-!/.mysql-data/.gitkeep
-
-# Local Env Files
+# Local env files
 *.local
+.env
