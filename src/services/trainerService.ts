@@ -7,11 +7,27 @@ import {
   TrainerVerbEntry,
   UserSelection,
 } from "../types";
-import { normalizeRoot } from "../utils/hebrew";
+import { normalizeHebrewText, normalizeRoot } from "../utils/hebrew";
 
 const FILTER_KEY = "parsetrainer:filters:v1";
 
-export const dataset: TrainerDataset = rawDataset as TrainerDataset;
+const normalizeDataset = (data: TrainerDataset): TrainerDataset => {
+  return {
+    ...data,
+    roots: data.roots.map((root) => ({
+      ...root,
+      root: normalizeHebrewText(root.root),
+      translation: root.translation ? normalizeHebrewText(root.translation) : root.translation,
+    })),
+    verbs: data.verbs.map((verb) => ({
+      ...verb,
+      verb: normalizeHebrewText(verb.verb),
+      root: normalizeHebrewText(verb.root),
+    })),
+  };
+};
+
+export const dataset: TrainerDataset = normalizeDataset(rawDataset as TrainerDataset);
 
 const normalizeNullable = (value: string | null | undefined): string => value ?? "";
 

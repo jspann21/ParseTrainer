@@ -27,14 +27,19 @@ import {
 } from "./services/trainerService";
 import { AnswerCandidate, FilterState, HistoryEntry, OptionItem, Prompt, UserSelection } from "./types";
 
-const formatParsing = (answer: AnswerCandidate): string => {
+const formatParsing = (answer: AnswerCandidate): React.ReactNode => {
   const person = DISPLAY_LABELS.person[answer.person ?? ""];
   const gender = DISPLAY_LABELS.gender[answer.gender ?? ""];
   const number = DISPLAY_LABELS.number[answer.number ?? ""];
   const tense = DISPLAY_LABELS.tense[answer.tense] || answer.tense;
   const stem = DISPLAY_LABELS.stem[answer.stem] || answer.stem;
 
-  return `${stem}, ${tense}, ${person} ${gender} ${number}, Root ${answer.root}`;
+  return (
+    <>
+      {stem}, {tense}, {person} {gender} {number}, Root{" "}
+      <span className="hebrew-text">{answer.root}</span>
+    </>
+  );
 };
 
 type SubmissionStatus = "idle" | "partial" | "correct" | "incorrect";

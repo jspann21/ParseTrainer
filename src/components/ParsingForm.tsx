@@ -7,7 +7,7 @@ import {
   PERSON_OPTIONS,
 } from "../constants";
 import { AnswerCandidate, OptionItem, UserSelection } from "../types";
-import { normalizeRoot } from "../utils/hebrew";
+import { normalizeHebrewText, normalizeRoot } from "../utils/hebrew";
 
 interface ParsingFormProps {
   selection: UserSelection;
@@ -102,7 +102,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
   tenseOptions,
 }) => {
   const handleVirtualKey = (char: string) => {
-    onChange("root", selection.root + char);
+    onChange("root", normalizeHebrewText(selection.root + char));
   };
 
   const handleBackspace = () => {
@@ -168,7 +168,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
           <input
             type="text"
             value={selection.root}
-            onChange={(event) => onChange("root", event.target.value)}
+            onChange={(event) => onChange("root", normalizeHebrewText(event.target.value))}
             disabled={disabled}
             placeholder="Type or use keyboard below"
             className={`hebrew-text text-right border text-2xl rounded-xl block w-full p-3 pl-12 transition-all shadow-sm ${isSubmitted
