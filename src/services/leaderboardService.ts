@@ -4,9 +4,27 @@ import { LeaderboardEntry } from "../types";
 export const fetchTopScores = async (): Promise<LeaderboardEntry[]> => {
     if (!supabase) return [];
 
-    const { data, error } = await supabase.rpc("get_top_scores");
+    // Try RPC first
+    const { data: rpcData, error: rpcError } = await supabase.rpc("get_top_scores");
+
+    if (!rpcError && rpcData) {
+        return rpcData as LeaderboardEntry[];
+    }
+
+    if (rpcError) {
+        console.warn("RPC get_top_scores failed, falling back to raw select:", rpcError);
+    }
+
+    // Fallback: Raw Select
+    const { data, error } = await supabase
+        .from("leaderboard")
+        .select("id, initials, streak, created_at")
+        .order("streak", { ascending: false })
+        .order("created_at", { ascending: true })
+        .limit(10);
+
     if (error) {
-        console.error("Failed to fetch top scores:", error);
+        console.error("Failed to fetch top scores (fallback):", error);
         return [];
     }
 
@@ -36,16 +54,28 @@ export const qualifiesForLeaderboard = async (
 ): Promise<boolean> => {
     if (!supabase || streak < 1) return false;
 
+    // Try RPC first
     const { data, error } = await supabase.rpc("qualifies_for_leaderboard", {
         score: streak,
     });
 
-    if (error) {
-        console.error("Failed to check leaderboard qualification:", error);
-        return false;
+    if (!error && typeof data === "boolean") {
+        return data;
     }
 
-    return data as boolean;
+    console.warn("RPC qualifies_for_leaderboard failed or missing, using fallback check:", error);
+
+    // Fallback: Fetch top scores and compare manually
+    const topScores = await fetchTopScores();
+
+    // If fewer than 10 scores, any score > 0 qualifies (we already checked streak < 1)
+    if (topScores.length < 10) {
+        return true;
+    }
+
+    // If 10 scores, must beat the 10th score
+    const lowestTopScore = topScores[topScores.length - 1].streak;
+    return streak > lowestTopScore;
 };
 
 export const subscribeToLeaderboard = (
