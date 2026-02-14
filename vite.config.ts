@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   base: "/ParseTrainer/",
-  publicDir: false,
+  // publicDir: true, // Default is true, so removing the false line enables it
   plugins: [react()],
   server: {
     port: 3000,
