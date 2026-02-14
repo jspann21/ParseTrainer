@@ -44,8 +44,10 @@ const OptionGroup = ({
     <div className="flex flex-wrap gap-2">
       {options.map((option) => {
         const isSelected = value === option.value;
-        const isCorrect = isSubmitted && isSelected && acceptableValues.has(option.value);
+        const isAccepted = acceptableValues.has(option.value);
+        const isCorrect = isSubmitted && isSelected && isAccepted;
         const isWrong = isSubmitted && isSelected && !acceptableValues.has(option.value);
+        const isExpected = isSubmitted && !isSelected && isAccepted;
 
         let classes = "px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 flex items-center gap-2 ";
 
@@ -53,6 +55,9 @@ const OptionGroup = ({
           if (isCorrect) {
             classes +=
               "bg-green-100 dark:bg-green-900/40 border-green-500 dark:border-green-500/50 text-green-800 dark:text-green-200 ring-1 ring-green-500 shadow-sm font-bold opacity-100";
+          } else if (isExpected) {
+            classes +=
+              "bg-green-50 dark:bg-green-900/20 border-green-400 dark:border-green-500/40 text-green-700 dark:text-green-300 opacity-100";
           } else if (isWrong) {
             classes +=
               "bg-red-50 dark:bg-red-900/40 border-red-400 dark:border-red-500/50 text-red-700 dark:text-red-200 opacity-100";
@@ -77,6 +82,7 @@ const OptionGroup = ({
           >
             {option.label}
             {isSubmitted && isCorrect && <Check className="w-4 h-4" />}
+            {isSubmitted && isExpected && <Check className="w-4 h-4" />}
             {isSubmitted && isWrong && <X className="w-4 h-4" />}
           </button>
         );
