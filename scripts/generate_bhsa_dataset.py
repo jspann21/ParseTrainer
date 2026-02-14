@@ -397,6 +397,11 @@ def main() -> None:
         if F.st.v(node) == "c":
              continue
 
+        # Exclude qere/ketiv forms (written form differs from read form)
+        qere = F.qere_utf8.v(node)
+        if qere and qere != word:
+             continue
+
         # Note: Jussives are harder to detect, so we leave them mixed in with imperfect unless we find a reliable marker.
 
         dedup_key = (
