@@ -213,8 +213,8 @@ function AppContent() {
             <BookOpen className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">ParseTrainer</h1>
-            <p className="text-gray-500 dark:text-gray-400 text-sm">Static Hebrew Verb Parsing Practice</p>
+            <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">Morphology Master</h1>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Biblical Hebrew Parser</p>
           </div>
         </div>
 
@@ -261,13 +261,12 @@ function AppContent() {
 
         {(status !== "idle" || isReviewMode) && displayed && (
           <div
-            className={`mb-8 p-6 rounded-xl border-l-8 shadow-md flex flex-col gap-4 ${
-              isReviewMode
+            className={`mb-8 p-6 rounded-xl border-l-8 shadow-md flex flex-col gap-4 ${isReviewMode
                 ? "bg-gray-100 dark:bg-slate-800 border-gray-400"
                 : status === "correct" || status === "partial"
-                ? "bg-green-50 dark:bg-green-900/20 border-green-500"
-                : "bg-red-50 dark:bg-red-900/20 border-red-500"
-            }`}
+                  ? "bg-green-50 dark:bg-green-900/20 border-green-500"
+                  : "bg-red-50 dark:bg-red-900/20 border-red-500"
+              }`}
           >
             <div className="flex items-center gap-2">
               {isReviewMode ? (
@@ -325,8 +324,7 @@ function AppContent() {
               onSubmit={handleSubmit}
               isSubmitted={status === "incorrect" || status === "correct"}
               disabled={loading || status === "correct" || status === "incorrect"}
-              correctAnswer={feedbackAnswers[0]}
-              correctRoot={feedbackAnswers[0]?.root}
+              possibleAnswers={feedbackAnswers}
               stemOptions={stemOptions}
               tenseOptions={tenseOptions}
             />
