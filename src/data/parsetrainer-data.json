@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generatedAt": "2026-02-14T02:21:01Z",
+    "generatedAt": "2026-02-14T03:12:20Z",
     "source": "BHSA/ETCBC",
-    "version": 2
+    "version": 3
   },
   "stems": [
     {
@@ -9004,6 +9004,16 @@
       "gender": "m",
       "number": "s",
       "id": 1260
+    },
+    {
+      "verb": "שִׂימָה",
+      "root": "שִׂם",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 1332
     },
     {
       "verb": "נָשִׂימָה",
