@@ -44,8 +44,8 @@ const OptionGroup = ({
     <div className="flex flex-wrap gap-2">
       {options.map((option) => {
         const isSelected = value === option.value;
-        const isCorrect = isSubmitted && acceptableValues.has(option.value);
-        const isWrong = isSubmitted && isSelected && !isCorrect;
+        const isCorrect = isSubmitted && isSelected && acceptableValues.has(option.value);
+        const isWrong = isSubmitted && isSelected && !acceptableValues.has(option.value);
 
         let classes = "px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 flex items-center gap-2 ";
 
