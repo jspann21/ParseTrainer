@@ -387,13 +387,14 @@ def main() -> None:
         if tense == "passive participle (qal)" and stem != "Qal":
             continue
 
-        # Exclude cohortatives (imperfect 1st person with paragogic He)
-        if tense == "imperfect" and person == "1" and F.vbe.v(node) == "H":
-             continue
-        
-        # Exclude energic nun forms (vbe contains 'N', e.g. WN=תְּאַבְּדוּן, NH=תִּפָּקַחְנָה)
+        # Exclude paragogic He and energic nun forms
+        # H/H= = cohortative/volitive, N/WN/NH = paragogic nun
         vbe = F.vbe.v(node) or ""
-        if "N" in vbe:
+        if "H" in vbe or "N" in vbe:
+             continue
+
+        # Exclude construct-state forms (e.g. בְּאֹכְלֵי = participle in construct)
+        if F.st.v(node) == "c":
              continue
 
         # Note: Jussives are harder to detect, so we leave them mixed in with imperfect unless we find a reliable marker.
