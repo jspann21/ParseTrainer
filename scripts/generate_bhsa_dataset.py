@@ -50,7 +50,7 @@ PERSONS = {
     "NA": None,
     "absent": None,
 }
-GENDERS = {"m": "m", "f": "f", "unknown": None, "NA": None, "absent": None}
+GENDERS = {"m": "m", "f": "f", "c": "c", "unknown": "c", "NA": None, "absent": None}
 NUMBERS = {"sg": "s", "pl": "p", "du": "p", "unknown": None, "NA": None, "absent": None}
 
 ABSENT_VALUES = {None, "NA", "absent"}
@@ -72,24 +72,53 @@ ROOT_KINDS = [
 SELECTED_ROOTS = {
     "קטל": ("קטל", "Strong", "kill"),
     "פקד": ("פקד", "Strong", "visit / appoint"),
+    "שמר": ("שׁמר", "Strong", "keep / guard"),
+    "כתב": ("כתב", "Strong", "write"),
+    
     "חזק": ("חזק", "I-Guttural", "be strong"),
     "עמד": ("עמד", "I-Guttural", "stand"),
+    "עבד": ("עבד", "I-Guttural", "serve / work"),
+    "הרג": ("הרג", "I-Guttural", "kill"),
+    
     "אכל": ("אכל", "I-Aleph", "eat"),
+    "אהב": ("אהב", "I-Aleph", "love"),
+    "אבד": ("אבד", "I-Aleph", "perish"),
+    "אמר": ("אמר", "I-Aleph", "say"),
+    
     "לקח": ("לקח", "I-Nun", "take"),
     "נגשׁ": ("נגשׁ", "I-Nun", "approach"),
     "נפל": ("נפל", "I-Nun", "fall"),
     "נתן": ("נתן", "I-Nun", "give"),
+    
     "ישׁב": ("ישׁב", "I-Waw", "sit / dwell"),
+    "ילד": ("ילד", "I-Waw", "bear / beget"),
+    "ירד": ("ירד", "I-Waw", "go down"),
+    "ידע": ("ידע", "I-Waw", "know"),
+    
     "יטב": ("יטב", "I-Yod", "be good"),
+    "ינק": ("ינק", "I-Yod", "suckle"),
+    "ישׁר": ("ישׁר", "I-Yod", "be straight"),
+    "יקץ": ("יקץ", "I-Yod", "awake"),
+    
     "בחר": ("בחר", "II-Guttural", "choose"),
     "ברך": ("ברך", "II-Guttural", "bless"),
+    "שׁחט": ("שׁחט", "II-Guttural", "slaughter"),
+    "זעק": ("זעק", "II-Guttural", "cry out"),
+    
     "גלה": ("גלה", "III-He", "uncover / reveal"),
+    "בנה": ("בנה", "III-He", "build"),
+    "ראה": ("ראה", "III-He", "see"),
+    "עשׂה": ("עשׂה", "III-He", "do / make"),
+    
     "בושׁ": ("בוֹשׁ", "Biconsonantal", "be ashamed"),
     "מות": ("מוּת", "Biconsonantal", "die"),
     "קום": ("קוּם", "Biconsonantal", "arise"),
     "שׂים": ("שִׂם", "Biconsonantal", "put / set"),
+    
     "סבב": ("סבב", "Geminate", "surround"),
     "קלל": ("קלל", "Geminate", "be light / curse"),
+    "תמם": ("תמם", "Geminate", "be complete"),
+    "רנן": ("רנן", "Geminate", "shout for joy"),
 }
 
 STEMS_LIST = [
@@ -105,9 +134,7 @@ STEMS_LIST = [
 TENSES_LIST = [
     {"name": "perfect", "abbreviation": "pf"},
     {"name": "imperfect", "abbreviation": "ipf"},
-    {"name": "cohortative", "abbreviation": "coh"},
     {"name": "imperative", "abbreviation": "imp"},
-    {"name": "jussive", "abbreviation": "jus"},
     {"name": "infinitive construct", "abbreviation": "infcs"},
     {"name": "infinitive absolute", "abbreviation": "infabs"},
     {"name": "participle", "abbreviation": "ptc"},
@@ -293,11 +320,33 @@ def main() -> None:
         stem = STEMS[stem_raw]
         tense = TENSES[tense_raw]
         person = PERSONS.get(F.ps.v(node))
-        gender = GENDERS.get(F.gn.v(node))
+        
+        # Handle gender: map 'unknown' to 'c' only for finite verbs (perf, impf, etc) 
+        # but keep as None for infinitives if they are truly N/A.
+        raw_gender = F.gn.v(node)
+        gender = GENDERS.get(raw_gender)
+        
+        # If the gender is 'unknown' in BHSA, our GENDERS map now returns 'c'.
+        # This is correct for 3pl perfects, etc.
+        # But for infinitives, 'unknown' usually means irrelevant/none.
+        if tense in {"infinitive construct", "infinitive absolute"}:
+             # Force None for infinitives, regardless of raw data saying 'unknown'
+             gender = None 
+        
         number = NUMBERS.get(F.nu.v(node))
+
+
 
         if tense == "passive participle (qal)" and stem != "Qal":
             continue
+
+        # Exclude cohortatives (imperfect 1st person with paragogic He)
+        if tense == "imperfect" and person == "1" and F.vbe.v(node) == "H":
+             continue
+        
+        # Exclude longer paragogic He forms (H=) if needed ? 
+        # Usually 'H' is the standard paragogic he.
+        # Note: Jussives are harder to detect, so we leave them mixed in with imperfect unless we find a reliable marker.
 
         dedup_key = (
             unpoint(verb_str),
