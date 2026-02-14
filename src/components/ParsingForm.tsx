@@ -15,8 +15,7 @@ interface ParsingFormProps {
   onSubmit: () => void;
   disabled: boolean;
   isSubmitted: boolean;
-  correctAnswer?: AnswerCandidate;
-  correctRoot?: string;
+  possibleAnswers?: AnswerCandidate[];
   stemOptions: OptionItem[];
   tenseOptions: OptionItem[];
 }
@@ -27,7 +26,7 @@ const OptionGroup = ({
   options,
   onChange,
   disabled,
-  correctValue,
+  acceptableValues,
   isSubmitted,
 }: {
   label: string;
@@ -35,7 +34,7 @@ const OptionGroup = ({
   options: OptionItem[];
   onChange: (value: string) => void;
   disabled: boolean;
-  correctValue?: string;
+  acceptableValues: Set<string>;
   isSubmitted: boolean;
 }) => (
   <div className="flex flex-col">
@@ -45,7 +44,7 @@ const OptionGroup = ({
     <div className="flex flex-wrap gap-2">
       {options.map((option) => {
         const isSelected = value === option.value;
-        const isCorrect = isSubmitted && correctValue === option.value;
+        const isCorrect = isSubmitted && acceptableValues.has(option.value);
         const isWrong = isSubmitted && isSelected && !isCorrect;
 
         let classes = "px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 flex items-center gap-2 ";
@@ -92,8 +91,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
   onSubmit,
   disabled,
   isSubmitted,
-  correctAnswer,
-  correctRoot,
+  possibleAnswers = [],
   stemOptions,
   tenseOptions,
 }) => {
@@ -105,17 +103,44 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
     onChange("root", selection.root.slice(0, -1));
   };
 
+  const normalizeNullable = (value: string | null | undefined) => value ?? "";
+
+  const possibleRoots = React.useMemo(() => {
+    return Array.from(new Set(possibleAnswers.map((answer) => answer.root)));
+  }, [possibleAnswers]);
+
   const isRootCorrect = React.useMemo(() => {
-    if (!correctRoot) {
+    if (possibleRoots.length === 0) {
       return false;
     }
 
     const normalizedSelected = normalizeRoot(selection.root);
-    const normalizedExpected = normalizeRoot(correctRoot);
-    return normalizedSelected.length >= 2 && normalizedExpected.includes(normalizedSelected);
-  }, [correctRoot, selection.root]);
+    if (normalizedSelected.length < 2) {
+      return false;
+    }
 
-  const normalizeNullable = (value: string | null | undefined) => value ?? "";
+    return possibleRoots.some((root) => normalizeRoot(root).includes(normalizedSelected));
+  }, [possibleRoots, selection.root]);
+
+  const acceptedStemValues = React.useMemo(() => {
+    return new Set(possibleAnswers.map((answer) => answer.stem));
+  }, [possibleAnswers]);
+
+  const acceptedTenseValues = React.useMemo(() => {
+    return new Set(possibleAnswers.map((answer) => answer.tense));
+  }, [possibleAnswers]);
+
+  const acceptedPersonValues = React.useMemo(() => {
+    return new Set(possibleAnswers.map((answer) => normalizeNullable(answer.person)));
+  }, [possibleAnswers]);
+
+  const acceptedGenderValues = React.useMemo(() => {
+    return new Set(possibleAnswers.map((answer) => normalizeNullable(answer.gender)));
+  }, [possibleAnswers]);
+
+  const acceptedNumberValues = React.useMemo(() => {
+    return new Set(possibleAnswers.map((answer) => normalizeNullable(answer.number)));
+  }, [possibleAnswers]);
 
   return (
     <div className="space-y-8">
@@ -161,9 +186,10 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
           )}
         </div>
 
-        {isSubmitted && !isRootCorrect && correctRoot && (
+        {isSubmitted && !isRootCorrect && possibleRoots.length > 0 && (
           <div className="mt-2 text-sm text-red-600 dark:text-red-400 font-medium flex items-center justify-end gap-2">
-            Correct Root: <span className="hebrew-text text-lg">{correctRoot}</span>
+            Possible Root{possibleRoots.length > 1 ? "s" : ""}:{" "}
+            <span className="hebrew-text text-lg">{possibleRoots.join(" / ")}</span>
           </div>
         )}
 
@@ -200,7 +226,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
           onChange={(value) => onChange("stem", value)}
           disabled={disabled}
           isSubmitted={isSubmitted}
-          correctValue={correctAnswer?.stem}
+          acceptableValues={acceptedStemValues}
         />
 
         <OptionGroup
@@ -210,7 +236,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
           onChange={(value) => onChange("tense", value)}
           disabled={disabled}
           isSubmitted={isSubmitted}
-          correctValue={correctAnswer?.tense}
+          acceptableValues={acceptedTenseValues}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
@@ -221,7 +247,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
             onChange={(value) => onChange("person", value)}
             disabled={disabled}
             isSubmitted={isSubmitted}
-            correctValue={normalizeNullable(correctAnswer?.person)}
+            acceptableValues={acceptedPersonValues}
           />
 
           <OptionGroup
@@ -231,7 +257,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
             onChange={(value) => onChange("gender", value)}
             disabled={disabled}
             isSubmitted={isSubmitted}
-            correctValue={normalizeNullable(correctAnswer?.gender)}
+            acceptableValues={acceptedGenderValues}
           />
 
           <OptionGroup
@@ -241,7 +267,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
             onChange={(value) => onChange("number", value)}
             disabled={disabled}
             isSubmitted={isSubmitted}
-            correctValue={normalizeNullable(correctAnswer?.number)}
+            acceptableValues={acceptedNumberValues}
           />
         </div>
       </div>
