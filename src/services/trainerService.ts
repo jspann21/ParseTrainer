@@ -191,10 +191,13 @@ export const findMatchingAnswers = (
   answers: AnswerCandidate[]
 ): AnswerCandidate[] => {
   const normalizedSelectedRoot = normalizeRoot(selection.root);
+  const isRootSkipped = normalizedSelectedRoot.length === 0;
 
   return answers.filter((answer) => {
     const normalizedAnswerRoot = normalizeRoot(answer.root);
-    const rootMatch = normalizedSelectedRoot.length >= 2 && normalizedAnswerRoot.includes(normalizedSelectedRoot);
+    const rootMatch =
+      isRootSkipped ||
+      (normalizedSelectedRoot.length >= 2 && normalizedAnswerRoot.includes(normalizedSelectedRoot));
 
     if (!rootMatch) {
       return false;

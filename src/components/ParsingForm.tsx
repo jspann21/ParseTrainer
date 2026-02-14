@@ -109,18 +109,27 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
     return Array.from(new Set(possibleAnswers.map((answer) => answer.root)));
   }, [possibleAnswers]);
 
+  const normalizedSelectedRoot = React.useMemo(() => {
+    return normalizeRoot(selection.root);
+  }, [selection.root]);
+
+  const isRootSkipped = normalizedSelectedRoot.length === 0;
+
   const isRootCorrect = React.useMemo(() => {
     if (possibleRoots.length === 0) {
       return false;
     }
 
-    const normalizedSelected = normalizeRoot(selection.root);
-    if (normalizedSelected.length < 2) {
+    if (isRootSkipped) {
+      return true;
+    }
+
+    if (normalizedSelectedRoot.length < 2) {
       return false;
     }
 
-    return possibleRoots.some((root) => normalizeRoot(root).includes(normalizedSelected));
-  }, [possibleRoots, selection.root]);
+    return possibleRoots.some((root) => normalizeRoot(root).includes(normalizedSelectedRoot));
+  }, [isRootSkipped, normalizedSelectedRoot, possibleRoots]);
 
   const acceptedStemValues = React.useMemo(() => {
     return new Set(possibleAnswers.map((answer) => answer.stem));
@@ -146,7 +155,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
     <div className="space-y-8">
       <div>
         <label className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-3 ml-1 block">
-          Root
+          Root (Optional)
         </label>
 
         <div className="relative">
@@ -157,7 +166,9 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
             disabled={disabled}
             placeholder="Type or use keyboard below"
             className={`hebrew-text text-right border text-2xl rounded-xl block w-full p-3 pl-12 transition-all shadow-sm ${isSubmitted
-              ? isRootCorrect
+              ? isRootSkipped
+                ? "bg-slate-50 dark:bg-slate-800/50 border-slate-300 dark:border-slate-600"
+                : isRootCorrect
                 ? "bg-green-50 dark:bg-green-900/20 border-green-500"
                 : "bg-red-50 dark:bg-red-900/20 border-red-500"
               : "bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-600"
@@ -165,7 +176,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
             dir="rtl"
           />
 
-          {isSubmitted ? (
+          {isSubmitted && !isRootSkipped ? (
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               {isRootCorrect ? (
                 <Check className="w-6 h-6 text-green-600 dark:text-green-400" />
@@ -186,9 +197,15 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
           )}
         </div>
 
-        {isSubmitted && !isRootCorrect && possibleRoots.length > 0 && (
-          <div className="mt-2 text-sm text-red-600 dark:text-red-400 font-medium flex items-center justify-end gap-2">
-            Possible Root{possibleRoots.length > 1 ? "s" : ""}:{" "}
+        {isSubmitted && possibleRoots.length > 0 && (!isRootCorrect || isRootSkipped) && (
+          <div
+            className={`mt-2 text-sm font-medium flex items-center justify-end gap-2 ${isRootSkipped
+              ? "text-blue-700 dark:text-blue-300"
+              : "text-red-600 dark:text-red-400"
+              }`}
+          >
+            {isRootSkipped ? "Root" : "Possible Root"}
+            {possibleRoots.length > 1 ? "s" : ""}:{" "}
             <span className="hebrew-text text-lg">{possibleRoots.join(" / ")}</span>
           </div>
         )}
@@ -275,7 +292,7 @@ export const ParsingForm: React.FC<ParsingFormProps> = ({
       {!isSubmitted && (
         <button
           onClick={onSubmit}
-          disabled={disabled || !selection.root || !selection.stem || !selection.tense}
+          disabled={disabled || !selection.stem || !selection.tense}
           className="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-700 dark:to-indigo-800 dark:hover:from-blue-800 dark:hover:to-indigo-900 disabled:from-gray-300 disabled:to-gray-400 dark:disabled:from-gray-600 dark:disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg text-base"
         >
           Check Answer
