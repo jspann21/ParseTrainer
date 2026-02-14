@@ -1,6 +1,6 @@
 # ParseTrainer
 
-ParseTrainer is now a static React app (Vite) that practices Hebrew verb parsing using fixed data snapshots.
+ParseTrainer is a static React + Vite app for Hebrew verb parsing practice.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ Install dependencies:
 npm install
 ```
 
-Run development server:
+Start dev server:
 
 ```bash
 npm run dev
@@ -33,34 +33,36 @@ Preview production build:
 npm run preview
 ```
 
-## Data source and export
+## Data
 
-The app reads from `src/data/parsetrainer-data.json`.
+Practice data is stored in `src/data/parsetrainer-data.json`.
 
-To export a fresh snapshot from ParseTrainer database tables:
+Generate the dataset directly from BHSA/ETCBC (pronominal suffix forms are excluded by default):
 
 ```bash
-php artisan trainer:export-static-data --out=src/data/parsetrainer-data.json
+pip install text-fabric
+python scripts/generate_bhsa_dataset.py
 ```
 
-The JSON contract includes:
+To keep pronominal suffix forms in the generated data:
 
-- `meta`
-- `stems`
-- `tenses`
-- `rootKinds`
-- `roots`
-- `verbs`
+```bash
+python scripts/generate_bhsa_dataset.py --include-pronominal-suffixes
+```
 
 ## GitHub Pages
 
-The project includes `.github/workflows/pages.yml` to build and deploy `dist/`.
+Deployment is configured in `.github/workflows/pages.yml`.
 
-`vite.config.ts` is configured with project-pages base path:
-
-- `/ParseTrainer/`
+The Vite base path is set in `vite.config.ts`.
 
 ## License
 
 Copyright 2015-present Camil Staps.
 Licensed under GPL v3.0.
+
+## Attribution
+
+Data usage:
+- [HebrewTools/ParseTrainer](https://github.com/HebrewTools/ParseTrainer)
+- [ETCBC/bhsa](https://github.com/ETCBC/bhsa)
