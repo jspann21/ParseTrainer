@@ -99,7 +99,7 @@ SELECTED_ROOTS = {
     "יטב": ("יטב", "I-Yod", "be good"),
     "ינק": ("ינק", "I-Yod", "suckle"),
     "ישׁר": ("ישׁר", "I-Yod", "be straight"),
-    "יקץ": ("יקץ", "I-Yod", "awake"),
+    "יצא": ("יצא", "I-Yod", "go out"),
     
     "בחר": ("בחר", "II-Guttural", "choose"),
     "ברך": ("ברך", "II-Guttural", "bless"),
@@ -387,8 +387,11 @@ def main() -> None:
         if tense == "imperfect" and person == "1" and F.vbe.v(node) == "H":
              continue
         
-        # Exclude longer paragogic He forms (H=) if needed ? 
-        # Usually 'H' is the standard paragogic he.
+        # Exclude energic nun forms (vbe contains 'N', e.g. WN=תְּאַבְּדוּן, NH=תִּפָּקַחְנָה)
+        vbe = F.vbe.v(node) or ""
+        if "N" in vbe:
+             continue
+
         # Note: Jussives are harder to detect, so we leave them mixed in with imperfect unless we find a reliable marker.
 
         dedup_key = (
