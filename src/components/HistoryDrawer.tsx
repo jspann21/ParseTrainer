@@ -57,7 +57,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({ isOpen, onClose, h
                       <span className="hebrew-text text-2xl font-bold text-gray-800 dark:text-gray-100">
                         {entry.word}
                       </span>
-                      <span className="text-xs font-mono text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded max-w-48 truncate">
+                      <span className="hebrew-text text-sm text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded max-w-48 truncate">
                         {roots}
                       </span>
                     </div>
