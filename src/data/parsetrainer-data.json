@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generatedAt": "2026-02-14T05:31:35Z",
+    "generatedAt": "2026-02-14T05:45:41Z",
     "source": "BHSA/ETCBC",
-    "version": 5
+    "version": 6
   },
   "stems": [
     {
@@ -354,6 +354,30 @@
       "rootKindId": 10,
       "rootKindName": "Geminate",
       "translation": "be complete"
+    },
+    {
+      "root": "היה",
+      "rootKindId": 11,
+      "rootKindName": "Double weak",
+      "translation": "be"
+    },
+    {
+      "root": "חיה",
+      "rootKindId": 11,
+      "rootKindName": "Double weak",
+      "translation": "live"
+    },
+    {
+      "root": "נטה",
+      "rootKindId": 11,
+      "rootKindName": "Double weak",
+      "translation": "stretch out / turn"
+    },
+    {
+      "root": "נשׂא",
+      "rootKindId": 11,
+      "rootKindName": "Double weak",
+      "translation": "lift / carry"
     }
   ],
   "verbs": [
@@ -518,24 +542,24 @@
       "id": 2752
     },
     {
-      "verb": "יֹאבְדוּ",
+      "verb": "יֹאבֵדוּ",
       "root": "אבד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "p",
-      "id": 3659
+      "id": 4727
     },
     {
-      "verb": "יֹאבַד",
+      "verb": "יֹאבֵד",
       "root": "אבד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 1358
+      "id": 4728
     },
     {
       "verb": "אָבֹד",
@@ -618,14 +642,14 @@
       "id": 2757
     },
     {
-      "verb": "אָבָדוּ",
+      "verb": "אָבְדוּ",
       "root": "אבד",
       "stem": "Qal",
       "tense": "perfect",
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 3665
+      "id": 4729
     },
     {
       "verb": "אָבַד",
@@ -688,14 +712,14 @@
       "id": 2770
     },
     {
-      "verb": "יֵאָכְלוּ",
+      "verb": "יֵאָכֵלוּ",
       "root": "אכל",
       "stem": "Niphal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "p",
-      "id": 20
+      "id": 4730
     },
     {
       "verb": "יֵאָכֵל",
@@ -775,7 +799,7 @@
       "person": "1",
       "gender": "c",
       "number": "p",
-      "id": 2111
+      "id": 4731
     },
     {
       "verb": "אֹכַל",
@@ -808,24 +832,24 @@
       "id": 2774
     },
     {
-      "verb": "תֹאכְלוּ",
+      "verb": "תֹּאכְלוּ",
       "root": "אכל",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 43
+      "id": 4508
     },
     {
-      "verb": "תֹּאכֵל",
+      "verb": "תֹּאכַל",
       "root": "אכל",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 2776
+      "id": 4732
     },
     {
       "verb": "תֹּאכַל",
@@ -988,14 +1012,14 @@
       "id": 87
     },
     {
-      "verb": "אָכָלְתִּי",
+      "verb": "אָכַלְתִּי",
       "root": "אכל",
       "stem": "Qal",
       "tense": "perfect",
       "person": "1",
       "gender": "c",
       "number": "s",
-      "id": 2781
+      "id": 4733
     },
     {
       "verb": "אֲכַלְתֶּם",
@@ -1058,14 +1082,14 @@
       "id": 2786
     },
     {
-      "verb": "יֵאָמַר",
+      "verb": "יֵאָמֵר",
       "root": "אמר",
       "stem": "Niphal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 1820
+      "id": 4734
     },
     {
       "verb": "נֶאֱמַר",
@@ -1138,14 +1162,14 @@
       "id": 2788
     },
     {
-      "verb": "תֹּאמְרוּ",
+      "verb": "תֹאמְרוּ",
       "root": "אמר",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 2789
+      "id": 4735
     },
     {
       "verb": "תֹּמְרוּ",
@@ -1158,14 +1182,14 @@
       "id": 2790
     },
     {
-      "verb": "תֹאמַר",
+      "verb": "תֹּאמַר",
       "root": "אמר",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 1836
+      "id": 4509
     },
     {
       "verb": "תֹּאמַר",
@@ -1195,7 +1219,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3707
+      "id": 4736
     },
     {
       "verb": "אָמֹר",
@@ -1225,7 +1249,7 @@
       "person": null,
       "gender": null,
       "number": null,
-      "id": 3708
+      "id": 4737
     },
     {
       "verb": "לֵאמֹור",
@@ -1628,14 +1652,14 @@
       "id": 4351
     },
     {
-      "verb": "אָסָפְתִּי",
+      "verb": "אָסַפְתִּי",
       "root": "אסף",
       "stem": "Qal",
       "tense": "perfect",
       "person": "1",
       "gender": "c",
       "number": "s",
-      "id": 4352
+      "id": 4738
     },
     {
       "verb": "אָסַפְתָּ",
@@ -1735,7 +1759,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 2804
+      "id": 4739
     },
     {
       "verb": "בֹּושִׁי",
@@ -1775,7 +1799,7 @@
       "person": "2",
       "gender": "f",
       "number": "s",
-      "id": 2809
+      "id": 4740
     },
     {
       "verb": "תֵּבֹשִׁי",
@@ -1795,7 +1819,7 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 124
+      "id": 4741
     },
     {
       "verb": "תֵּבֹושׁ",
@@ -2098,14 +2122,14 @@
       "id": 4373
     },
     {
-      "verb": "תִבְעַר",
+      "verb": "תִּבְעַר",
       "root": "בער",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 4374
+      "id": 4515
     },
     {
       "verb": "יִבְעֲרוּ",
@@ -2138,14 +2162,14 @@
       "id": 4377
     },
     {
-      "verb": "בֹּעֲרָה",
+      "verb": "בֹּעֵרָה",
       "root": "בער",
       "stem": "Qal",
       "tense": "participle",
       "person": null,
       "gender": "f",
       "number": "s",
-      "id": 4378
+      "id": 4742
     },
     {
       "verb": "בֹּעֶרֶת",
@@ -2295,7 +2319,7 @@
       "person": null,
       "gender": null,
       "number": null,
-      "id": 2605
+      "id": 4743
     },
     {
       "verb": "בָּרֹוךְ",
@@ -2508,14 +2532,14 @@
       "id": 2887
     },
     {
-      "verb": "תִגָּלֶה",
+      "verb": "תִּגָּלֶה",
       "root": "גלה",
       "stem": "Niphal",
       "tense": "imperfect",
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 2888
+      "id": 4517
     },
     {
       "verb": "תִּגָּל",
@@ -2855,7 +2879,7 @@
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 2198
+      "id": 4744
     },
     {
       "verb": "גָּלָה",
@@ -2866,6 +2890,346 @@
       "gender": "m",
       "number": "s",
       "id": 2919
+    },
+    {
+      "verb": "נִהְיָה",
+      "root": "היה",
+      "stem": "Niphal",
+      "tense": "participle",
+      "person": null,
+      "gender": "f",
+      "number": "s",
+      "id": 4519
+    },
+    {
+      "verb": "נִהְיֵיתִי",
+      "root": "היה",
+      "stem": "Niphal",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4520
+    },
+    {
+      "verb": "נִהְיֵיתָ",
+      "root": "היה",
+      "stem": "Niphal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4521
+    },
+    {
+      "verb": "נִהְיָה",
+      "root": "היה",
+      "stem": "Niphal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4522
+    },
+    {
+      "verb": "הֲיִי",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4523
+    },
+    {
+      "verb": "הֱיוּ",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4524
+    },
+    {
+      "verb": "הֱיֵה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4525
+    },
+    {
+      "verb": "נִהְיֶה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "p",
+      "id": 4526
+    },
+    {
+      "verb": "אֶהְיֶה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4527
+    },
+    {
+      "verb": "תִהְיִי",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4528
+    },
+    {
+      "verb": "תִּהְיוּ",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4529
+    },
+    {
+      "verb": "תִּהְיֶה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4530
+    },
+    {
+      "verb": "תְּהִי",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4531
+    },
+    {
+      "verb": "תְּהִי",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4532
+    },
+    {
+      "verb": "תִּהְיֶה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4533
+    },
+    {
+      "verb": "יִהְיוּ",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4745
+    },
+    {
+      "verb": "יְהִי",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4535
+    },
+    {
+      "verb": "יִהְיֶה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4746
+    },
+    {
+      "verb": "הָיֹו",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4537
+    },
+    {
+      "verb": "הָיֹה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4538
+    },
+    {
+      "verb": "לִהְיֹות",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4539
+    },
+    {
+      "verb": "הֱיֹות",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4540
+    },
+    {
+      "verb": "מִהְיֹת",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4541
+    },
+    {
+      "verb": "לִהְיֹת",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4542
+    },
+    {
+      "verb": "בִּהְיֹות",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4543
+    },
+    {
+      "verb": "מִהְיֹות",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4544
+    },
+    {
+      "verb": "הֹויָה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "f",
+      "number": "s",
+      "id": 4545
+    },
+    {
+      "verb": "הָיִיתִי",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4546
+    },
+    {
+      "verb": "הָיִית",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4747
+    },
+    {
+      "verb": "הֱיִיתֶם",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4548
+    },
+    {
+      "verb": "הֱיִתֶם",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4549
+    },
+    {
+      "verb": "הָיִיתָ",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4550
+    },
+    {
+      "verb": "הָיוּ",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4551
+    },
+    {
+      "verb": "הָיָה",
+      "root": "היה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4552
     },
     {
       "verb": "יֵהָרֵג",
@@ -3688,14 +4052,14 @@
       "id": 2974
     },
     {
-      "verb": "יֶחֱזְקוּ",
+      "verb": "יֶחֶזְקוּ",
       "root": "חזק",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "p",
-      "id": 365
+      "id": 4748
     },
     {
       "verb": "יֶחֱזַק",
@@ -3726,6 +4090,326 @@
       "gender": "m",
       "number": "s",
       "id": 373
+    },
+    {
+      "verb": "הַחֲיוּ",
+      "root": "חיה",
+      "stem": "Hiphil",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4553
+    },
+    {
+      "verb": "לְהַחֲיֹת",
+      "root": "חיה",
+      "stem": "Hiphil",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4554
+    },
+    {
+      "verb": "לְהַחֲיֹות",
+      "root": "חיה",
+      "stem": "Hiphil",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4555
+    },
+    {
+      "verb": "הֶחֱיֵיתִי",
+      "root": "חיה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4556
+    },
+    {
+      "verb": "הַחֲיִתֶם",
+      "root": "חיה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4557
+    },
+    {
+      "verb": "הֶחֱיָה",
+      "root": "חיה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4558
+    },
+    {
+      "verb": "אֲחַיֶּה",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4559
+    },
+    {
+      "verb": "תְחַיֶּה",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4560
+    },
+    {
+      "verb": "תְּחַיֶּה",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4561
+    },
+    {
+      "verb": "יְחַיּוּ",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4562
+    },
+    {
+      "verb": "יְחַיֶּה",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4563
+    },
+    {
+      "verb": "מְחַיֶּה",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4564
+    },
+    {
+      "verb": "חִיִּיתֶם",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4565
+    },
+    {
+      "verb": "חִיּוּ",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4566
+    },
+    {
+      "verb": "חִיָּה",
+      "root": "חיה",
+      "stem": "Piel",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4567
+    },
+    {
+      "verb": "חֲיִי",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4568
+    },
+    {
+      "verb": "נִחְיֶה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "p",
+      "id": 4569
+    },
+    {
+      "verb": "אֶחְיֶה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4570
+    },
+    {
+      "verb": "תִחְיִי",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4571
+    },
+    {
+      "verb": "תִּחְיוּ",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4572
+    },
+    {
+      "verb": "תִחְיֶה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4749
+    },
+    {
+      "verb": "תִּחְיֶה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4574
+    },
+    {
+      "verb": "תְּחִי",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4575
+    },
+    {
+      "verb": "יִחְיוּ",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4576
+    },
+    {
+      "verb": "יִחְיֶה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4577
+    },
+    {
+      "verb": "יְחִי",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4578
+    },
+    {
+      "verb": "חָיֹה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4579
+    },
+    {
+      "verb": "חָיֹו",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4580
+    },
+    {
+      "verb": "לִחְיֹות",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4581
+    },
+    {
+      "verb": "חָיוּ",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4582
+    },
+    {
+      "verb": "חַי",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4583
+    },
+    {
+      "verb": "חָיָה",
+      "root": "חיה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4584
     },
     {
       "verb": "הֹודוּ",
@@ -4045,7 +4729,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 2987
+      "id": 4750
     },
     {
       "verb": "נֹודָע",
@@ -4178,14 +4862,14 @@
       "id": 3811
     },
     {
-      "verb": "יֵדָע",
+      "verb": "יֵדַע",
       "root": "ידע",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3812
+      "id": 4751
     },
     {
       "verb": "יְיֵדָע",
@@ -4335,7 +5019,7 @@
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3002
+      "id": 4752
     },
     {
       "verb": "יָדַעְתָּה",
@@ -4365,7 +5049,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 1992
+      "id": 4753
     },
     {
       "verb": "אֹולִיד",
@@ -4378,14 +5062,14 @@
       "id": 2266
     },
     {
-      "verb": "תֹולִיד",
+      "verb": "תֹּולִיד",
       "root": "ילד",
       "stem": "Hiphil",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 1449
+      "id": 4588
     },
     {
       "verb": "יֹולִיד",
@@ -4865,7 +5549,7 @@
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 4244
+      "id": 4754
     },
     {
       "verb": "תֹצִיא",
@@ -5078,14 +5762,14 @@
       "id": 4270
     },
     {
-      "verb": "צְּאוּ",
+      "verb": "צְאוּ",
       "root": "יצא",
       "stem": "Qal",
       "tense": "imperative",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 4271
+      "id": 4755
     },
     {
       "verb": "צֵא",
@@ -5118,24 +5802,24 @@
       "id": 4275
     },
     {
-      "verb": "תֵּצְאִי",
+      "verb": "תֵצְאִי",
       "root": "יצא",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "f",
       "number": "s",
-      "id": 4276
+      "id": 4756
     },
     {
-      "verb": "תֵּצְאוּ",
+      "verb": "תֵצְאוּ",
       "root": "יצא",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 4277
+      "id": 4757
     },
     {
       "verb": "תֵצֵא",
@@ -5145,17 +5829,17 @@
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 4279
+      "id": 4758
     },
     {
-      "verb": "תֵצֵא",
+      "verb": "תֵּצֵא",
       "root": "יצא",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 4280
+      "id": 4591
     },
     {
       "verb": "יֵצְאוּ",
@@ -5538,14 +6222,14 @@
       "id": 2298
     },
     {
-      "verb": "תֵּרֵד",
+      "verb": "תֵרֵד",
       "root": "ירד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3068
+      "id": 4759
     },
     {
       "verb": "תֵּרֶד",
@@ -6115,7 +6799,7 @@
       "person": "2",
       "gender": "f",
       "number": "s",
-      "id": 3101
+      "id": 4760
     },
     {
       "verb": "שְׁבוּ",
@@ -6165,17 +6849,17 @@
       "person": "2",
       "gender": "f",
       "number": "s",
-      "id": 3108
+      "id": 4761
     },
     {
-      "verb": "תֵּשֵׁבוּ",
+      "verb": "תֵּשְׁבוּ",
       "root": "ישׁב",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 3109
+      "id": 4762
     },
     {
       "verb": "תֵשֵׁב",
@@ -6185,7 +6869,7 @@
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3110
+      "id": 4763
     },
     {
       "verb": "תֵּשֵׁב",
@@ -6208,14 +6892,14 @@
       "id": 3895
     },
     {
-      "verb": "יֵשֶׁב",
+      "verb": "יֵשֵׁב",
       "root": "ישׁב",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3896
+      "id": 4764
     },
     {
       "verb": "יָשֹׁב",
@@ -6288,14 +6972,14 @@
       "id": 3118
     },
     {
-      "verb": "יֹושָׁבֶת",
+      "verb": "יֹושֶׁבֶת",
       "root": "ישׁב",
       "stem": "Qal",
       "tense": "participle",
       "person": null,
       "gender": "f",
       "number": "s",
-      "id": 3119
+      "id": 4765
     },
     {
       "verb": "יֹשְׁבִים",
@@ -6635,7 +7319,7 @@
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 4440
+      "id": 4766
     },
     {
       "verb": "יִכָּרֵתוּ",
@@ -6668,24 +7352,24 @@
       "id": 4443
     },
     {
-      "verb": "נִכְרָתוּ",
+      "verb": "נִכְרְתוּ",
       "root": "כרת",
       "stem": "Niphal",
       "tense": "perfect",
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 4444
+      "id": 4767
     },
     {
-      "verb": "נִכְרַת",
+      "verb": "נִכְרָת",
       "root": "כרת",
       "stem": "Niphal",
       "tense": "perfect",
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 4445
+      "id": 4768
     },
     {
       "verb": "כָרַּת",
@@ -6758,14 +7442,14 @@
       "id": 4452
     },
     {
-      "verb": "תִכְרֹת",
+      "verb": "תִּכְרֹת",
       "root": "כרת",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 4453
+      "id": 4596
     },
     {
       "verb": "יִכְרֹתוּ",
@@ -6928,14 +7612,14 @@
       "id": 3158
     },
     {
-      "verb": "כְּתֹב",
+      "verb": "כְּתָב",
       "root": "כתב",
       "stem": "Qal",
       "tense": "imperative",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3159
+      "id": 4769
     },
     {
       "verb": "כְּתֹוב",
@@ -7005,7 +7689,7 @@
       "person": null,
       "gender": "f",
       "number": "s",
-      "id": 3942
+      "id": 4770
     },
     {
       "verb": "כְּתֻבִים",
@@ -7028,14 +7712,14 @@
       "id": 3172
     },
     {
-      "verb": "כָתוּב",
+      "verb": "כָּתוּב",
       "root": "כתב",
       "stem": "Qal",
       "tense": "passive participle (qal)",
       "person": null,
       "gender": "m",
       "number": "s",
-      "id": 1626
+      "id": 4598
     },
     {
       "verb": "כָּתַבְתִּי",
@@ -7048,14 +7732,14 @@
       "id": 3173
     },
     {
-      "verb": "כָּתָבְתָּ",
+      "verb": "כָּתַבְתָּ",
       "root": "כתב",
       "stem": "Qal",
       "tense": "perfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3174
+      "id": 4771
     },
     {
       "verb": "כָּתְבוּ",
@@ -7235,7 +7919,7 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 3188
+      "id": 4772
     },
     {
       "verb": "תִּקַּח",
@@ -7258,14 +7942,14 @@
       "id": 3190
     },
     {
-      "verb": "יִקְחוּ",
+      "verb": "יִקָּחוּ",
       "root": "לקח",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "p",
-      "id": 3950
+      "id": 4600
     },
     {
       "verb": "יִקַּח",
@@ -7388,14 +8072,14 @@
       "id": 3197
     },
     {
-      "verb": "לָקָחוּ",
+      "verb": "לָקְחוּ",
       "root": "לקח",
       "stem": "Qal",
       "tense": "perfect",
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 2349
+      "id": 4773
     },
     {
       "verb": "לָקַח",
@@ -7665,7 +8349,7 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 663
+      "id": 4774
     },
     {
       "verb": "תָמֻתוּ",
@@ -7675,7 +8359,7 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 664
+      "id": 4775
     },
     {
       "verb": "תָּמוּת",
@@ -7688,14 +8372,14 @@
       "id": 3211
     },
     {
-      "verb": "תָּמוּת",
+      "verb": "תָמוּת",
       "root": "מוּת",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 3213
+      "id": 4776
     },
     {
       "verb": "תָּמֹת",
@@ -7818,14 +8502,14 @@
       "id": 3977
     },
     {
-      "verb": "לָמֵת",
+      "verb": "לְמֵת",
       "root": "מוּת",
       "stem": "Qal",
       "tense": "participle",
       "person": null,
       "gender": "m",
       "number": "s",
-      "id": 3978
+      "id": 4777
     },
     {
       "verb": "כְּמֵת",
@@ -8018,14 +8702,14 @@
       "id": 3243
     },
     {
-      "verb": "גְּשׁוּ",
+      "verb": "גֹּשׁוּ",
       "root": "נגשׁ",
       "stem": "Qal",
       "tense": "imperative",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 3244
+      "id": 4778
     },
     {
       "verb": "גֶּשׁ",
@@ -8068,14 +8752,14 @@
       "id": 3249
     },
     {
-      "verb": "יִגָּשׁוּ",
+      "verb": "יִגְּשׁוּ",
       "root": "נגשׁ",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "p",
-      "id": 3982
+      "id": 4779
     },
     {
       "verb": "יִגַּשׁ",
@@ -8136,6 +8820,356 @@
       "gender": "m",
       "number": "s",
       "id": 746
+    },
+    {
+      "verb": "הַטִּי",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4603
+    },
+    {
+      "verb": "הַטּוּ",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4604
+    },
+    {
+      "verb": "הַטֵּה",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4605
+    },
+    {
+      "verb": "הַט",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4606
+    },
+    {
+      "verb": "אַטֶּה",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4607
+    },
+    {
+      "verb": "אָט",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4608
+    },
+    {
+      "verb": "תַטֶּה",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4780
+    },
+    {
+      "verb": "תַּט",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4610
+    },
+    {
+      "verb": "יַטּוּ",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4611
+    },
+    {
+      "verb": "יַטֶּה",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4612
+    },
+    {
+      "verb": "לְהַטֹּת",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4613
+    },
+    {
+      "verb": "לְהַטֹּות",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4614
+    },
+    {
+      "verb": "מַטֶּה",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4615
+    },
+    {
+      "verb": "הִטִּיתִי",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4616
+    },
+    {
+      "verb": "הִטִּיתֶם",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4617
+    },
+    {
+      "verb": "הִטּוּ",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4618
+    },
+    {
+      "verb": "הִטָּה",
+      "root": "נטה",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4619
+    },
+    {
+      "verb": "יִנָּטוּ",
+      "root": "נטה",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4620
+    },
+    {
+      "verb": "יִנָּטֶה",
+      "root": "נטה",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4621
+    },
+    {
+      "verb": "נִטָּיוּ",
+      "root": "נטה",
+      "stem": "Niphal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4622
+    },
+    {
+      "verb": "נְטֵה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4623
+    },
+    {
+      "verb": "נִטֶּה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "p",
+      "id": 4624
+    },
+    {
+      "verb": "תֵּט",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4625
+    },
+    {
+      "verb": "תִּטֶּה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4626
+    },
+    {
+      "verb": "יִטֶּה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4627
+    },
+    {
+      "verb": "לִנְטֹת",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4628
+    },
+    {
+      "verb": "לִנְטֹות",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4629
+    },
+    {
+      "verb": "נֹטֶה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4630
+    },
+    {
+      "verb": "נֹוטֶה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4631
+    },
+    {
+      "verb": "נְטוּיָה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "passive participle (qal)",
+      "person": null,
+      "gender": "f",
+      "number": "s",
+      "id": 4632
+    },
+    {
+      "verb": "נָטוּי",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "passive participle (qal)",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4633
+    },
+    {
+      "verb": "נָטִיתִי",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4634
+    },
+    {
+      "verb": "נָטִיתָ",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4635
+    },
+    {
+      "verb": "נָטוּ",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4636
+    },
+    {
+      "verb": "נָטָה",
+      "root": "נטה",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4637
     },
     {
       "verb": "הַפִּילוּ",
@@ -8508,14 +9542,664 @@
       "id": 2388
     },
     {
-      "verb": "נָפָל",
+      "verb": "נָפַל",
       "root": "נפל",
       "stem": "Qal",
       "tense": "perfect",
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 813
+      "id": 4781
+    },
+    {
+      "verb": "תַּשִּׁאוּ",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4638
+    },
+    {
+      "verb": "תַשֶּׁה",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4639
+    },
+    {
+      "verb": "יַשִּׁיאוּ",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4640
+    },
+    {
+      "verb": "יַשֶּׁה",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4641
+    },
+    {
+      "verb": "יַשִּׁיא",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4642
+    },
+    {
+      "verb": "יַשִּׁא",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4643
+    },
+    {
+      "verb": "הַשֵּׁא",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4644
+    },
+    {
+      "verb": "הִשֵּׁאתָ",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4645
+    },
+    {
+      "verb": "הִשִּׁיא",
+      "root": "נשׂא",
+      "stem": "Hiphil",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4646
+    },
+    {
+      "verb": "תִּתְנַשְּׂאוּ",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4647
+    },
+    {
+      "verb": "תִתְנַשֵּׂא",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4648
+    },
+    {
+      "verb": "יִנַּשְּׂאוּ",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4649
+    },
+    {
+      "verb": "יִתְנַשָּׂא",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4650
+    },
+    {
+      "verb": "הִתְנַשֵּׂא",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4651
+    },
+    {
+      "verb": "בְהִתְנַשֵּׂא",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4652
+    },
+    {
+      "verb": "מִתְנַשֵּׂא",
+      "root": "נשׂא",
+      "stem": "Hitpael",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4653
+    },
+    {
+      "verb": "הִנָּשֵׂא",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4654
+    },
+    {
+      "verb": "אֶנָּשֵׂא",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4655
+    },
+    {
+      "verb": "תִּנָּשֵׂאוּ",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4656
+    },
+    {
+      "verb": "יִנָּשׂוּא",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4657
+    },
+    {
+      "verb": "יִנָּשְׂאוּ",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4658
+    },
+    {
+      "verb": "יִנָּשֵׂא",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4659
+    },
+    {
+      "verb": "נִשֵּׂאת",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "participle",
+      "person": null,
+      "gender": "f",
+      "number": "s",
+      "id": 4660
+    },
+    {
+      "verb": "נִשָּׂאָה",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "participle",
+      "person": null,
+      "gender": "f",
+      "number": "s",
+      "id": 4661
+    },
+    {
+      "verb": "נִשָּׂא",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4662
+    },
+    {
+      "verb": "נִשְּׁאוּ",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4663
+    },
+    {
+      "verb": "נִשָּׂא",
+      "root": "נשׂא",
+      "stem": "Niphal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4664
+    },
+    {
+      "verb": "מְנַשְּׂאִים",
+      "root": "נשׂא",
+      "stem": "Piel",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "p",
+      "id": 4665
+    },
+    {
+      "verb": "נִשֵּׂא",
+      "root": "נשׂא",
+      "stem": "Piel",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4666
+    },
+    {
+      "verb": "שְׂאִי",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4667
+    },
+    {
+      "verb": "שְׂאוּ",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4668
+    },
+    {
+      "verb": "שָׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4669
+    },
+    {
+      "verb": "נְשָׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperative",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4670
+    },
+    {
+      "verb": "נִשָּׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "p",
+      "id": 4671
+    },
+    {
+      "verb": "אֶשָּׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4672
+    },
+    {
+      "verb": "תִשְׂאִי",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "f",
+      "number": "s",
+      "id": 4782
+    },
+    {
+      "verb": "תִּשְׂאוּ",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4783
+    },
+    {
+      "verb": "תִשָּׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4784
+    },
+    {
+      "verb": "תִּשָּׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "f",
+      "number": "s",
+      "id": 4676
+    },
+    {
+      "verb": "יִשְׂאוּ",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "p",
+      "id": 4785
+    },
+    {
+      "verb": "יִשָּׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "imperfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4678
+    },
+    {
+      "verb": "נָשֹׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4679
+    },
+    {
+      "verb": "נָשֹׂוא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive absolute",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4680
+    },
+    {
+      "verb": "מִנְּשֹׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4681
+    },
+    {
+      "verb": "לָשֵׂאת",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4682
+    },
+    {
+      "verb": "שְׂאֵת",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4683
+    },
+    {
+      "verb": "בִּשְׂאֵת",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4684
+    },
+    {
+      "verb": "נְשֹׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "infinitive construct",
+      "person": null,
+      "gender": null,
+      "number": null,
+      "id": 4685
+    },
+    {
+      "verb": "נֹשְׂאֹת",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "f",
+      "number": "p",
+      "id": 4686
+    },
+    {
+      "verb": "נֹשְׂאֹות",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "f",
+      "number": "p",
+      "id": 4687
+    },
+    {
+      "verb": "נֹשְׂאִים",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "p",
+      "id": 4688
+    },
+    {
+      "verb": "נֹשִׁים",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "p",
+      "id": 4689
+    },
+    {
+      "verb": "כְּנֹשֶׁה",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4690
+    },
+    {
+      "verb": "נֹשֵׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4691
+    },
+    {
+      "verb": "נֹשֶׁה",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4692
+    },
+    {
+      "verb": "נֹושֶׁה",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "participle",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4693
+    },
+    {
+      "verb": "נָשֻׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "passive participle (qal)",
+      "person": null,
+      "gender": "m",
+      "number": "s",
+      "id": 4694
+    },
+    {
+      "verb": "נָשָׂאתִי",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4695
+    },
+    {
+      "verb": "נָשִׁיתִי",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "1",
+      "gender": "c",
+      "number": "s",
+      "id": 4696
+    },
+    {
+      "verb": "נְשָׂאתֶם",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "p",
+      "id": 4697
+    },
+    {
+      "verb": "נָשָׂאתָה",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4698
+    },
+    {
+      "verb": "נָשָׂאתָ",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "2",
+      "gender": "m",
+      "number": "s",
+      "id": 4699
+    },
+    {
+      "verb": "נָשְׂאוּ",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4700
+    },
+    {
+      "verb": "נָשׁוּ",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "c",
+      "number": "p",
+      "id": 4701
+    },
+    {
+      "verb": "נָשָׂא",
+      "root": "נשׂא",
+      "stem": "Qal",
+      "tense": "perfect",
+      "person": "3",
+      "gender": "m",
+      "number": "s",
+      "id": 4702
     },
     {
       "verb": "יֻתַּן",
@@ -8545,7 +10229,7 @@
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 3305
+      "id": 4786
     },
     {
       "verb": "יִנָּתֵן",
@@ -8578,14 +10262,14 @@
       "id": 3310
     },
     {
-      "verb": "נִתָּנוּ",
+      "verb": "נִתְּנוּ",
       "root": "נתן",
       "stem": "Niphal",
       "tense": "perfect",
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 3313
+      "id": 4787
     },
     {
       "verb": "נִתַּן",
@@ -8618,14 +10302,14 @@
       "id": 3317
     },
     {
-      "verb": "תֶּן",
+      "verb": "תֵּן",
       "root": "נתן",
       "stem": "Qal",
       "tense": "imperative",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3318
+      "id": 4788
     },
     {
       "verb": "נִתֵּן",
@@ -8648,14 +10332,14 @@
       "id": 3322
     },
     {
-      "verb": "תִתְּנִי",
+      "verb": "תִּתְּנִי",
       "root": "נתן",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "f",
       "number": "s",
-      "id": 3324
+      "id": 4704
     },
     {
       "verb": "תִּתְּנוּ",
@@ -8665,27 +10349,27 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 3325
+      "id": 4789
     },
     {
-      "verb": "תִּתֶּן",
+      "verb": "תִּתֵּן",
       "root": "נתן",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3326
+      "id": 4790
     },
     {
-      "verb": "תִתֵּן",
+      "verb": "תִּתֵּן",
       "root": "נתן",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 4012
+      "id": 4706
     },
     {
       "verb": "יִתְּנוּ",
@@ -8705,7 +10389,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 4013
+      "id": 4791
     },
     {
       "verb": "נָתֹן",
@@ -8728,14 +10412,14 @@
       "id": 2676
     },
     {
-      "verb": "לָתֶת",
+      "verb": "לָתֵת",
       "root": "נתן",
       "stem": "Qal",
       "tense": "infinitive construct",
       "person": null,
       "gender": null,
       "number": null,
-      "id": 4016
+      "id": 4792
     },
     {
       "verb": "נְתָן",
@@ -8915,7 +10599,7 @@
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 2404
+      "id": 4793
     },
     {
       "verb": "נָתַן",
@@ -9348,14 +11032,14 @@
       "id": 1799
     },
     {
-      "verb": "נַּעֲבֹד",
+      "verb": "נַעֲבֹד",
       "root": "עבד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "1",
       "gender": "c",
       "number": "p",
-      "id": 3369
+      "id": 4794
     },
     {
       "verb": "אֶעֱבֹד",
@@ -9368,14 +11052,14 @@
       "id": 2423
     },
     {
-      "verb": "תַּעֲבֹדוּ",
+      "verb": "תַּעַבְדוּ",
       "root": "עבד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 3371
+      "id": 4795
     },
     {
       "verb": "תַעֲבֹד",
@@ -9385,17 +11069,17 @@
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 1805
+      "id": 4796
     },
     {
-      "verb": "יַעֲבֹדוּ",
+      "verb": "יַעַבְדוּ",
       "root": "עבד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "3",
       "gender": "m",
       "number": "p",
-      "id": 1806
+      "id": 4797
     },
     {
       "verb": "יַעֲבֹד",
@@ -9418,14 +11102,14 @@
       "id": 4039
     },
     {
-      "verb": "עֲבֹד",
+      "verb": "עֲבָד",
       "root": "עבד",
       "stem": "Qal",
       "tense": "infinitive construct",
       "person": null,
       "gender": null,
       "number": null,
-      "id": 2686
+      "id": 4798
     },
     {
       "verb": "לַעֲבֹוד",
@@ -10175,7 +11859,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 4498
+      "id": 4799
     },
     {
       "verb": "לַעֲנֹות",
@@ -10285,7 +11969,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3394
+      "id": 4800
     },
     {
       "verb": "לְהֵעָשֹׂות",
@@ -10345,7 +12029,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3401
+      "id": 4801
     },
     {
       "verb": "עִשּׂוּ",
@@ -10405,17 +12089,17 @@
       "person": "1",
       "gender": "c",
       "number": "p",
-      "id": 3406
+      "id": 4802
     },
     {
-      "verb": "אֶעֱשֶׂהּ",
+      "verb": "אֶעֱשֶׂה",
       "root": "עשׂה",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "1",
       "gender": "c",
       "number": "s",
-      "id": 3408
+      "id": 4803
     },
     {
       "verb": "תַּעֲשִׂי",
@@ -10428,14 +12112,14 @@
       "id": 3409
     },
     {
-      "verb": "תַּעֲשׂוּ",
+      "verb": "תַעֲשׂוּ",
       "root": "עשׂה",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 3411
+      "id": 4804
     },
     {
       "verb": "תַּעֲשֶׂה",
@@ -10485,7 +12169,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3420
+      "id": 4805
     },
     {
       "verb": "יַעַשׂ",
@@ -10525,7 +12209,7 @@
       "person": null,
       "gender": null,
       "number": null,
-      "id": 4069
+      "id": 4806
     },
     {
       "verb": "מֵעֲשֹׂת",
@@ -10735,7 +12419,7 @@
       "person": "3",
       "gender": "m",
       "number": "s",
-      "id": 3446
+      "id": 4807
     },
     {
       "verb": "הַפְקֵד",
@@ -10958,14 +12642,14 @@
       "id": 3463
     },
     {
-      "verb": "תִפְקֹד",
+      "verb": "תִּפְקֹד",
       "root": "פקד",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 1085
+      "id": 4717
     },
     {
       "verb": "יִפְקֹדוּ",
@@ -11028,14 +12712,14 @@
       "id": 4099
     },
     {
-      "verb": "פֹּקֵד",
+      "verb": "פֹקֵד",
       "root": "פקד",
       "stem": "Qal",
       "tense": "participle",
       "person": null,
       "gender": "m",
       "number": "s",
-      "id": 3467
+      "id": 4808
     },
     {
       "verb": "פֹוקֵד",
@@ -11135,7 +12819,7 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 1119
+      "id": 4809
     },
     {
       "verb": "תָּקִים",
@@ -11485,7 +13169,7 @@
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 1182
+      "id": 4810
     },
     {
       "verb": "יָקוּמוּ",
@@ -11598,14 +13282,14 @@
       "id": 1203
     },
     {
-      "verb": "קָמְתִּי",
+      "verb": "קַמְתִּי",
       "root": "קוּם",
       "stem": "Qal",
       "tense": "perfect",
       "person": "1",
       "gender": "c",
       "number": "s",
-      "id": 4120
+      "id": 4811
     },
     {
       "verb": "קַמְתֶּם",
@@ -11785,7 +13469,7 @@
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3502
+      "id": 4812
     },
     {
       "verb": "יְקַלְלוּ",
@@ -12215,17 +13899,17 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 1670
+      "id": 4813
     },
     {
-      "verb": "תִרְאֶה",
+      "verb": "תִּרְאֶה",
       "root": "ראה",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 1671
+      "id": 4722
     },
     {
       "verb": "תֵּרֶא",
@@ -12245,7 +13929,7 @@
       "person": "3",
       "gender": "f",
       "number": "s",
-      "id": 1675
+      "id": 4814
     },
     {
       "verb": "תֵּרֶא",
@@ -12435,7 +14119,7 @@
       "person": "2",
       "gender": "m",
       "number": "p",
-      "id": 1697
+      "id": 4815
     },
     {
       "verb": "רָאִיתָ",
@@ -12988,14 +14672,14 @@
       "id": 3609
     },
     {
-      "verb": "שְׁמָר",
+      "verb": "שְׁמֹר",
       "root": "שׁמר",
       "stem": "Qal",
       "tense": "imperative",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3610
+      "id": 4816
     },
     {
       "verb": "שְׁמֹור",
@@ -13038,24 +14722,24 @@
       "id": 3616
     },
     {
-      "verb": "תִשְׁמֹר",
+      "verb": "תִּשְׁמֹר",
       "root": "שׁמר",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3618
+      "id": 4725
     },
     {
-      "verb": "תִשְׁמֹור",
+      "verb": "תִּשְׁמֹור",
       "root": "שׁמר",
       "stem": "Qal",
       "tense": "imperfect",
       "person": "2",
       "gender": "m",
       "number": "s",
-      "id": 3619
+      "id": 4726
     },
     {
       "verb": "תִּשְׁמֹר",
@@ -13218,14 +14902,14 @@
       "id": 3636
     },
     {
-      "verb": "שָׁמָרוּ",
+      "verb": "שָׁמְרוּ",
       "root": "שׁמר",
       "stem": "Qal",
       "tense": "perfect",
       "person": "3",
       "gender": "c",
       "number": "p",
-      "id": 4192
+      "id": 4817
     },
     {
       "verb": "שָׁמַר",
