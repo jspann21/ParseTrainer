@@ -150,7 +150,7 @@ export function useGameMode() {
     const recordIncorrect = useCallback(() => {
         setState((prev) => {
             const brokenStreak = prev.streak;
-            if (brokenStreak >= 3) {
+            if (brokenStreak > 0) {
                 // Check if qualifies for leaderboard asynchronously
                 qualifiesForLeaderboard(brokenStreak).then((qualifies) => {
                     if (qualifies) {
