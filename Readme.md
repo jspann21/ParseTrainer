@@ -56,6 +56,11 @@ Deployment is configured in `.github/workflows/pages.yml`.
 
 The Vite base path is set in `vite.config.ts`.
 
+## High Scores
+
+Game Mode high scores are stored per browser in local storage (`parsetrainer:leaderboard:v1`).
+Scores are local to the current browser/profile and are not shared globally.
+
 ## License
 
 Copyright 2015-present Camil Staps.

@@ -126,7 +126,7 @@ export const GamePanel: React.FC<GamePanelProps> = ({
     const [showHighScoreAnim, setShowHighScoreAnim] = useState(false);
     const hasShownHighThisSession = useRef(false);
 
-    // Get #1 score for high score animation check
+    // Get #1 local score for high score animation check
     const topScore = leaderboard.length > 0 ? leaderboard[0].streak : 0;
 
     // Animate streak changes & check high score
@@ -405,7 +405,7 @@ export const GamePanel: React.FC<GamePanelProps> = ({
                 <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
                     <Trophy className="w-4 h-4 text-yellow-400" />
                     <h3 className="text-sm font-bold text-white/90 uppercase tracking-wide">
-                        Top 10
+                        Local Top 10
                     </h3>
                     {userRank && (
                         <span className="ml-auto text-xs font-bold text-violet-400 bg-violet-400/10 px-2 py-0.5 rounded-full">
@@ -417,7 +417,7 @@ export const GamePanel: React.FC<GamePanelProps> = ({
                 <div className="divide-y divide-white/5 max-h-60 overflow-y-auto">
                     {displayItems.length === 0 ? (
                         <div className="px-4 py-6 text-center text-white/30 text-sm">
-                            No scores yet. Be the first!
+                            No local scores yet. Be the first!
                         </div>
                     ) : (
                         displayItems.map((entry, index) => {

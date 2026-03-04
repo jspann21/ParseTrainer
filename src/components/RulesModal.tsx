@@ -108,10 +108,10 @@ export const RulesModal: React.FC<RulesModalProps> = ({ isOpen, onClose }) => {
                             </div>
                             <div>
                                 <h3 className="text-white font-bold text-sm mb-1">
-                                    Top 10 Leaderboard
+                                    Local Top 10
                                 </h3>
                                 <p className="text-gray-400 text-sm leading-relaxed">
-                                    The global leaderboard tracks the <span className="text-yellow-300 font-semibold">top 10 highest streaks</span> in real time. If your streak qualifies, enter your initials to claim your spot!
+                                    This browser stores your <span className="text-yellow-300 font-semibold">top 10 highest streaks</span>. If your streak qualifies, enter your initials to claim your local spot.
                                 </p>
                             </div>
                         </div>

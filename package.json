@@ -8,7 +8,6 @@
     "data:generate": "python scripts/generate_bhsa_dataset.py"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.95.3",
     "canvas-confetti": "^1.9.4",
     "lucide-react": "^0.563.0",
     "react": "^19.2.0",

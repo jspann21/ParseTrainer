@@ -59,10 +59,9 @@ export function useGameMode() {
     const [state, setState] = useState<GameState>(INITIAL_STATE);
     const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
     const [comboText, setComboText] = useState<string | null>(null);
-    const hasSeenRules = useRef(false);
     const resultTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-    // Fetch leaderboard on mount + subscribe to realtime
+    // Fetch leaderboard on mount + subscribe to local updates
     useEffect(() => {
         fetchTopScores().then(setLeaderboard);
         const unsubscribe = subscribeToLeaderboard(setLeaderboard);
@@ -86,26 +85,13 @@ export function useGameMode() {
     const toggleGameMode = useCallback(() => {
         setState((prev) => {
             const nextGameMode = !prev.isGameMode;
-            if (nextGameMode && !hasSeenRules.current) {
-                hasSeenRules.current = true;
-                return {
-                    ...prev,
-                    isGameMode: true,
-                    streak: 0,
-                    bestStreak: 0,
-                    currentTier: "none",
-                    lastResult: null,
-                    showRulesModal: true,
-                    showSubmitModal: false,
-                    pendingSubmitStreak: 0,
-                };
-            }
             return {
                 ...prev,
                 isGameMode: nextGameMode,
                 streak: nextGameMode ? 0 : prev.streak,
                 currentTier: nextGameMode ? "none" : prev.currentTier,
                 lastResult: null,
+                showRulesModal: nextGameMode,
             };
         });
     }, []);
@@ -151,7 +137,7 @@ export function useGameMode() {
         setState((prev) => {
             const brokenStreak = prev.streak;
             if (brokenStreak > 0) {
-                // Check if qualifies for leaderboard asynchronously
+                // Check if qualifies for local leaderboard asynchronously
                 qualifiesForLeaderboard(brokenStreak).then((qualifies) => {
                     if (qualifies) {
                         setState((p) => ({

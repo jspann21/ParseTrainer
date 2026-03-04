@@ -147,7 +147,7 @@ export const ScoreSubmitModal: React.FC<ScoreSubmitModalProps> = ({
                     <div className="text-6xl mb-4 animate-trophy-glow">🏆</div>
 
                     <h2 className="text-2xl font-black text-white mb-2">
-                        {submitted ? "Score Saved!" : "New High Score!"}
+                        {submitted ? "Saved Locally!" : "New High Score!"}
                     </h2>
 
                     {/* Streak display */}
@@ -197,7 +197,7 @@ export const ScoreSubmitModal: React.FC<ScoreSubmitModalProps> = ({
                         </>
                     ) : (
                         <p className="text-green-400 font-semibold text-lg mt-4">
-                            ✓ Added to the leaderboard!
+                            ✓ Saved to your local leaderboard!
                         </p>
                     )}
                 </div>
